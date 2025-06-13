@@ -1,0 +1,452 @@
+<items>
+  <item>
+    <id>1</id>
+    <name>https://amazon.com</name>
+    <relevance>0.61</relevance>
+    <size>2.9 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/amazon.html</downloadUrl>
+    <viewUrl>/view/amazon</viewUrl>
+  </item>
+  <item>
+    <id>2</id>
+    <name>https://buzzfeed.com</name>
+    <relevance>0.87</relevance>
+    <size>5.8 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/buzzfeed.html</downloadUrl>
+    <viewUrl>/view/buzzfeed</viewUrl>
+  </item>
+  <item>
+    <id>3</id>
+    <name>https://si.edu</name>
+    <relevance>0.75</relevance>
+    <size>1.5 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/si.html</downloadUrl>
+    <viewUrl>/view/si</viewUrl>
+  </item>
+  <item>
+    <id>4</id>
+    <name>https://barnesandnoble.com</name>
+    <relevance>0.74</relevance>
+    <size>7.2 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/barnesandnoble.html</downloadUrl>
+    <viewUrl>/view/barnesandnoble</viewUrl>
+  </item>
+  <item>
+    <id>5</id>
+    <name>https://tumblr.com</name>
+    <relevance>0.71</relevance>
+    <size>3.7 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/tumblr.html</downloadUrl>
+    <viewUrl>/view/tumblr</viewUrl>
+  </item>
+  <item>
+    <id>6</id>
+    <name>youtube</name>
+    <relevance>0.2</relevance>
+    <size>7.2 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/youtube.html</downloadUrl>
+    <viewUrl>/view/youtube</viewUrl>
+  </item>
+  <item>
+    <id>7</id>
+    <name>http://wikipedia.com</name>
+    <relevance>0.61</relevance>
+    <size>7.2 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/wikipedia.html</downloadUrl>
+    <viewUrl>/view/wikipedia</viewUrl>
+  </item>
+  <item>
+    <id>8</id>
+    <name>instagram</name>
+    <relevance>0.54</relevance>
+    <size>2.9 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/instagram.html</downloadUrl>
+    <viewUrl>/view/instagram</viewUrl>
+  </item>
+  <item>
+    <id>9</id>
+    <name>twitter</name>
+    <relevance>0.9</relevance>
+    <size>3.9 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/twitter.html</downloadUrl>
+    <viewUrl>/view/amazon</viewUrl>
+  </item>
+  <item>
+    <id>10</id>
+    <name>https://covid-api.com/</name>
+    <relevance>0.53</relevance>
+    <size>6.3 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/covid.html</downloadUrl>
+    <viewUrl>/view/covid</viewUrl>
+  </item>
+  <item>
+    <id>11</id>
+    <name>http://marketwatch.com</name>
+    <relevance>0.38</relevance>
+    <size>3.9 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/amazon.html</downloadUrl>
+    <viewUrl>/view/amazon</viewUrl>
+  </item>
+  <item>
+    <id>12</id>
+    <name>shazam</name>
+    <relevance>0.49</relevance>
+    <size>2.9 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/shazam.html</downloadUrl>
+    <viewUrl>/view/shazam</viewUrl>
+  </item>
+  <item>
+    <id>13</id>
+    <name>https://walmart.com</name>
+    <relevance>0.44</relevance>
+    <size>5.8 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/walmart.html</downloadUrl>
+    <viewUrl>/view/walmart</viewUrl>
+  </item>
+  <item>
+    <id>14</id>
+    <name>https://allrecipes.com</name>
+    <relevance>0.51</relevance>
+    <size>2.1 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/allrecipes.html</downloadUrl>
+    <viewUrl>/view/allrecipes</viewUrl>
+  </item>
+  <item>
+    <id>15</id>
+    <name>http://nhs.uk</name>
+    <relevance>0.7</relevance>
+    <size>3.9 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/nhs.html</downloadUrl>
+    <viewUrl>/view/nhs</viewUrl>
+  </item>
+  <item>
+    <id>16</id>
+    <name>https://archive.org</name>
+    <relevance>0.67</relevance>
+    <size>3.9 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/archive.html</downloadUrl>
+    <viewUrl>/view/archive</viewUrl>
+  </item>
+  <item>
+    <id>17</id>
+    <name>https://marketstack.com/</name>
+    <relevance>0.99</relevance>
+    <size>4.6 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/marketstack.html</downloadUrl>
+    <viewUrl>/view/marketstack</viewUrl>
+  </item>
+  <item>
+    <id>18</id>
+    <name>https://cbc.ca</name>
+    <relevance>0.87</relevance>
+    <size>4.6 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/cbc.html</downloadUrl>
+    <viewUrl>/view/cbc</viewUrl>
+  </item>
+  <item>
+    <id>19</id>
+    <name>https://gizmodo.com</name>
+    <relevance>0.91</relevance>
+    <size>3.9 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/gizmodo.html</downloadUrl>
+    <viewUrl>/view/gizmodo</viewUrl>
+  </item>
+  <item>
+    <id>20</id>
+    <name>https://www.pbs.org/newshour/</name>
+    <relevance>0.62</relevance>
+    <size>3.7 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/pbs.html</downloadUrl>
+    <viewUrl>/view/pbs</viewUrl>
+  </item>
+  <item>
+    <id>21</id>
+    <name>https://www.wordsapi.com/</name>
+    <relevance>0.9</relevance>
+    <size>2.9 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/words.html</downloadUrl>
+    <viewUrl>/view/words</viewUrl>
+  </item>
+  <item>
+    <id>22</id>
+    <name>https://www.volunteermatch.org</name>
+    <relevance>0.16</relevance>
+    <size>2.1 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/volunteermatch.html</downloadUrl>
+    <viewUrl>/view/volunteermatch</viewUrl>
+  </item>
+  <item>
+    <id>23</id>
+    <name>http://telegraph.co.uk</name>
+    <relevance>0.09</relevance>
+    <size>4.6 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/telegraph.html</downloadUrl>
+    <viewUrl>/view/telegraph</viewUrl>
+  </item>
+  <item>
+    <id>24</id>
+    <name>http://domainmarket.com</name>
+    <relevance>0.74</relevance>
+    <size>3.9 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/domainmarket.html</downloadUrl>
+    <viewUrl>/view/domainmarket</viewUrl>
+  </item>
+  <item>
+    <id>25</id>
+    <name>TMDB</name>
+    <relevance>0.56</relevance>
+    <size>2.9 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/TMDB.html</downloadUrl>
+    <viewUrl>/view/TMDB</viewUrl>
+  </item>
+  <item>
+    <id>26</id>
+    <name>https://paginegialle.it</name>
+    <relevance>0.94</relevance>
+    <size>3.7 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/paginegialle.html</downloadUrl>
+    <viewUrl>/view/paginegialle</viewUrl>
+  </item>
+  <item>
+    <id>27</id>
+    <name>unsplash</name>
+    <relevance>0.56</relevance>
+    <size>4.6 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/unsplash.html</downloadUrl>
+    <viewUrl>/view/unsplash</viewUrl>
+  </item>
+  <item>
+    <id>28</id>
+    <name>OpenSky</name>
+    <relevance>0.01</relevance>
+    <size>1.5 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/OpenSky.html</downloadUrl>
+    <viewUrl>/view/OpenSky</viewUrl>
+  </item>
+  <item>
+    <id>29</id>
+    <name>trello</name>
+    <relevance>0.42</relevance>
+    <size>1.5 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/trello.html</downloadUrl>
+    <viewUrl>/view/trello</viewUrl>
+  </item>
+  <item>
+    <id>30</id>
+    <name>crunchbase</name>
+    <relevance>0.4</relevance>
+    <size>3.9 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/crunchbase.html</downloadUrl>
+    <viewUrl>/view/crunchbase</viewUrl>
+  </item>
+  <item>
+    <id>31</id>
+    <name>http://ask.com</name>
+    <relevance>0.36</relevance>
+    <size>5.8 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/ask.html</downloadUrl>
+    <viewUrl>/view/ask</viewUrl>
+  </item>
+  <item>
+    <id>32</id>
+    <name>https://nps.gov</name>
+    <relevance>0.4</relevance>
+    <size>3.7 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/nps.html</downloadUrl>
+    <viewUrl>/view/nps</viewUrl>
+  </item>
+  <item>
+    <id>33</id>
+    <name>https://berkeley.edu</name>
+    <relevance>0.88</relevance>
+    <size>1.5 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/berkeley.html</downloadUrl>
+    <viewUrl>/view/berkeley</viewUrl>
+  </item>
+  <item>
+    <id>34</id>
+    <name>OpenWeather</name>
+    <relevance>0.61</relevance>
+    <size>5.8 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/OpenWeather.html</downloadUrl>
+    <viewUrl>/view/OpenWeather</viewUrl>
+  </item>
+  <item>
+    <id>35</id>
+    <name>github</name>
+    <relevance>0.94</relevance>
+    <size>1.5 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/github.html</downloadUrl>
+    <viewUrl>/view/github</viewUrl>
+  </item>
+  <item>
+    <id>36</id>
+    <name>Google Maps</name>
+    <relevance>0.39</relevance>
+    <size>5.8 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/google-maps.html</downloadUrl>
+    <viewUrl>/view/google-maps</viewUrl>
+  </item>
+  <item>
+    <id>37</id>
+    <name>http://techcrunch.com</name>
+    <relevance>0.31</relevance>
+    <size>7.2 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/techcrunch.html</downloadUrl>
+    <viewUrl>/view/techcrunch</viewUrl>
+  </item>
+  <item>
+    <id>38</id>
+    <name>http://163.com</name>
+    <relevance>0.8</relevance>
+    <size>2.9 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/164.html</downloadUrl>
+    <viewUrl>/view/163</viewUrl>
+  </item>
+  <item>
+    <id>39</id>
+    <name>spotify</name>
+    <relevance>0.91</relevance>
+    <size>3.9 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/spotify.html</downloadUrl>
+    <viewUrl>/view/spotify</viewUrl>
+  </item>
+  <item>
+    <id>40</id>
+    <name>https://tamu.edu</name>
+    <relevance>0.84</relevance>
+    <size>6.3 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/tamu.html</downloadUrl>
+    <viewUrl>/view/tamu</viewUrl>
+  </item>
+  <item>
+    <id>41</id>
+    <name>https://pokeapi.co/</name>
+    <relevance>0.03</relevance>
+    <size>2.1 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/pokeapi.html</downloadUrl>
+    <viewUrl>/view/pokeapi</viewUrl>
+  </item>
+  <item>
+    <id>42</id>
+    <name>reddit</name>
+    <relevance>0.61</relevance>
+    <size>2.9 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/reddit.html</downloadUrl>
+    <viewUrl>/view/reddit</viewUrl>
+  </item>
+  <item>
+    <id>43</id>
+    <name>http://webmd.com</name>
+    <relevance>0.55</relevance>
+    <size>3.7 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/webmd.html</downloadUrl>
+    <viewUrl>/view/webmd</viewUrl>
+  </item>
+  <item>
+    <id>44</id>
+    <name>zillow</name>
+    <relevance>0.36</relevance>
+    <size>3.7 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/zillow.html</downloadUrl>
+    <viewUrl>/view/zillow</viewUrl>
+  </item>
+  <item>
+    <id>45</id>
+    <name>https://www.kingarthurbaking.com/recipes</name>
+    <relevance>0.85</relevance>
+    <size>7.2 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/kingarthurbaking.html</downloadUrl>
+    <viewUrl>/view/kingarthurbaking</viewUrl>
+  </item>
+  <item>
+    <id>46</id>
+    <name>http://nytimes.com</name>
+    <relevance>0.39</relevance>
+    <size>1.5 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/nytimes.html</downloadUrl>
+    <viewUrl>/view/nytimes</viewUrl>
+  </item>
+  <item>
+    <id>47</id>
+    <name>yummly</name>
+    <relevance>0.6</relevance>
+    <size>7.2 MB</size>
+    <type>api</type>
+    <downloadUrl>/downloads/yummly.html</downloadUrl>
+    <viewUrl>/view/yummly</viewUrl>
+  </item>
+  <item>
+    <id>48</id>
+    <name>https://www.bonappetit.com/</name>
+    <relevance>0.43</relevance>
+    <size>2.1 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/bonappetit.html</downloadUrl>
+    <viewUrl>/view/bonappetit</viewUrl>
+  </item>
+  <item>
+    <id>49</id>
+    <name>https://www.federalreserve.gov/</name>
+    <relevance>0.91</relevance>
+    <size>1.5 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/federalreserve.html</downloadUrl>
+    <viewUrl>/view/federalreserve</viewUrl>
+  </item>
+  <item>
+    <id>50</id>
+    <name>https://www.abc.net.au/news/</name>
+    <relevance>0.34</relevance>
+    <size>4.6 MB</size>
+    <type>website</type>
+    <downloadUrl>/downloads/abc.html</downloadUrl>
+    <viewUrl>/view/abc</viewUrl>
+  </item>
+</items>
