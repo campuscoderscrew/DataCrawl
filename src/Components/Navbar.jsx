@@ -11,7 +11,7 @@ function Navbar() {
       </div>
 
       <div className="mr-15">
-        <ul className="grid grid-cols-3 gap-25">
+        <ul className="grid grid-cols-5 gap-10">
           <li>
             <Link to="/Usage" className="text-white hover:text-gray-400">
               Usage
