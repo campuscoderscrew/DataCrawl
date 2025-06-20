@@ -2,7 +2,6 @@ import React from "react";
 import Select from "react-select";
 import SearchMessageErrors from "../Components/SearchMessageErrors";
 import LoadingScreen from "../Components/LoadingScreen";
-import Navbar from "../Components/Navbar";
 
 function Search() {
   // form options for error checking + handling output
@@ -111,7 +110,6 @@ function Search() {
 
   return (
     <>
-    <Navbar />
       <main className="relative bg bg-[url('../grid-background.svg')] bg-cover bg-center bg-no-repeat text-[#D4D4D4] w-screen h-screen p-4 box-border flex flex-col justify-center items-center">
         <div className="header flex flex-row justify-center items-center mb-10 mt-15">
           <img src="../Logo.svg" alt="datacrawl-logo" className="w-20 mr-10" />
