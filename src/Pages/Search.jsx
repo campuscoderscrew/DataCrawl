@@ -97,9 +97,8 @@ function Search() {
 
     // filter validated data based on selected options
     let dataOptionResults = []
-    if (!data.output) {
-      // console.log(data);
 
+    if (errs) {
       // filter by data type
       if (data["data-option"] === "api-only") {
         dataOptionResults = MockResults.filter(item => item["type"] === "api");
@@ -111,8 +110,19 @@ function Search() {
 
       // select number of links
       const filteredResults = dataOptionResults.slice(0, data["num-links"]);
-      console.log(filteredResults)
+      // console.log(filteredResults)
+
+      let fileType;
+      if (data.output === "structured") {
+        fileType = data["structured[file-type]"];
+      } else if (data.output === "semi-structured") {
+        fileType = data["semi-structured[file-type]"];
+      }
+      data["file-type"] = fileType;
+      delete data["structured[file-type]"];
+      delete data["semi-structured[file-type]"];
     }
+
   }
 
   return (
@@ -230,15 +240,15 @@ function Search() {
               <div className="bg-[#313131] h-45 rounded-lg flex flex-col justify-center items-center box-border">
                 <p>Output:</p>
                 <input type="radio" name="output" defaultValue="structured" />
-                <span>
+                <label for="structured">
                   {" "}
                   Structured:
-                  <select>
-                    <option>JSON</option>
-                    <option>XML</option>
-                    <option>YAML</option>
+                  <select name="structured[file-type]">
+                    <option value="json">JSON</option>
+                    <option value="xml">XML</option>
+                    <option value="yaml">YAML</option>
                   </select>
-                </span>
+                </label>
 
                 <input
                   type="radio"
@@ -248,15 +258,15 @@ function Search() {
                 <span>
                   {" "}
                   Semi-Structured: Raw +
-                  <select>
-                    <option>JSON</option>
-                    <option>XML</option>
-                    <option>YAML</option>
+                  <select name="semi-structured[file-type]">
+                    <option value="json">JSON</option>
+                    <option value="xml">XML</option>
+                    <option value="yaml">YAML</option>
                   </select>
                 </span>
 
                 <input type="radio" name="output" defaultValue="raw" />
-                <span> Raw </span>
+                <label for="raw"> Raw </label>
               </div>
 
               {/* Crawler settings */}
