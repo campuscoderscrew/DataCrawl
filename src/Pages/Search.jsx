@@ -1,13 +1,16 @@
 import React from "react";
-import SearchForm from "../Components/SearchForm";
-import Navbar from "../Components/Navbar";
 import Select from "react-select";
 import SearchMessageErrors from "../Components/SearchMessageErrors";
+import LoadingScreen from "../Components/LoadingScreen";
+import Navbar from "../Components/Navbar";
 
 function Search() {
   // form options for error checking + handling output
   const [options, setOptions] = React.useState([]);
   const [errors, setErrors] = React.useState([]);
+
+  // form option for loading screen state
+  const [loading, setLoading] = React.useState(false);
 
   // Drop down configurations (react-select package)
   const searchEngines = [
@@ -95,17 +98,26 @@ function Search() {
     setErrors(errs);
 
     if (!data.output) console.log(data);
+
+    if (errs.length == 0) {
+      setLoading(true);
+    }
+
   }
+
+  const cancelLoading = () => {
+      setLoading(false);
+  };
 
   return (
     <>
-      {/* <Navbar /> */}
-      <main className="bg-[url('../grid-background.svg')] bg-cover bg-center bg-no-repeat text-[#D4D4D4] w-screen h-screen p-4 box-border flex flex-col justify-center items-center">
+    <Navbar />
+      <main className="relative bg bg-[url('../grid-background.svg')] bg-cover bg-center bg-no-repeat text-[#D4D4D4] w-screen h-screen p-4 box-border flex flex-col justify-center items-center">
         <div className="header flex flex-row justify-center items-center mb-10 mt-15">
           <img src="../Logo.svg" alt="datacrawl-logo" className="w-20 mr-10" />
           <div className="header-text">
             <h1 className="text-5xl font-semibold mb-4 text-[#939395] ">
-              WebCrawler
+              DataCrawl
             </h1>
             <p className="bg-[linear-gradient(to_right,_#787878,_#DEDEDE,_#787878)] bg-clip-text text-transparent font-semibold text-lg ">
               World's first industrial data search engine
@@ -113,9 +125,13 @@ function Search() {
           </div>
         </div>
 
+      
         <form
           id="settings"
-          action={validateData}
+          onSubmit={(e) => {
+            e.preventDefault();
+            validateData(new FormData(e.target));
+          }}
           className="flex flex-col justify-center items-center"
         >
           {/* Search Bar */}
@@ -133,6 +149,7 @@ function Search() {
                   </div>
                 )}
                 styles={customStyles}
+                disabled={loading}
               />
               {/* <option defaultValue="google"></option>
                 <option defaultValue="firefox"></option>
@@ -146,135 +163,140 @@ function Search() {
               />
             </div>
 
-            <button className="bg-[#313131] py-3 px-6 rounded-full hover:cursor-pointer hover:bg-[#2C2C2C]">
+            <button className="bg-[#313131] py-3 px-6 rounded-full hover:cursor-pointer hover:bg-[#2C2C2C]"
+              disabled={loading}>
               Generate
             </button>
           </div>
-          {/* settings */}
-          <div className="grid gap-4 h-80 w-140">
-            {/* Row 1 */}
-            <div className="grid grid-cols-[45%_52%] h-30 gap-4 w-full">
-              {/* Search Engine */}
-              <div className="bg-[#313131] h-30 rounded-lg flex flex-col justify-center items-center box-border">
-                <div>
-                  <p className="mb-2">Search Engine:</p>
-                  <label>
-                    Links Generated
-                    <input
-                      className="rounded-sm bg-[#2A2A2A] w-[3rem] py-2 outline-none focus:ring-0 focus:border-none text-center ml-5"
-                      type="number"
-                      defaultValue="5"
-                      name="num-links"
-                    />
-                  </label>
-                </div>
-              </div>
-
-              {/* Data Options */}
-              {/* peer-checked:bg-blue-500 peer-checked:text-white px-4 py-2 rounded */}
-              <div className="bg-[#313131] h-30 rounded-lg flex flex-col justify-center items-center box-border">
-                <p>Data Options:</p>
-                <div>
-                  <input
-                    type="radio"
-                    name="data-option"
-                    defaultValue="api-only"
-                    className="peer"
-                  />
-                  <span className="">API Only</span>
-                </div>
-
-                <div>
-                  <input
-                    type="radio"
-                    name="data-option"
-                    defaultValue="website-only"
-                    className="peer"
-                  />
-                  <span className="">Website Only</span>
-                </div>
-
-                <div>
-                  <input
-                    type="radio"
-                    name="data-option"
-                    defaultValue="show-all"
-                    className="peer"
-                  />
-                  <span className="">Show All</span>
-                </div>
-              </div>
-            </div>{" "}
-            {/* End of Row 1 */}
-            {/* Row 2 */}
-            <div className="grid grid-cols-[60%_37%] h-45 gap-4 ">
-              {/* Output */}
-              <div className="bg-[#313131] h-45 rounded-lg flex flex-col justify-center items-center box-border">
-                <p>Output:</p>
-                <input type="radio" name="output" defaultValue="structured" />
-                <span>
-                  {" "}
-                  Structured:
-                  <select>
-                    <option>JSON</option>
-                    <option>XML</option>
-                    <option>YAML</option>
-                  </select>
-                </span>
-
-                <input
-                  type="radio"
-                  name="output"
-                  defaultValue="semi-structured"
-                />
-                <span>
-                  {" "}
-                  Semi-Structured: Raw +
-                  <select>
-                    <option>JSON</option>
-                    <option>XML</option>
-                    <option>YAML</option>
-                  </select>
-                </span>
-
-                <input type="radio" name="output" defaultValue="raw" />
-                <span> Raw </span>
-              </div>
-
-              {/* Crawler settings */}
-              <div className="bg-[#313131] h-45 rounded-lg flex flex-col justify-center items-center box-border">
-                <div>
-                  <p className="mb-4">Crawler Settings:</p>
-                  <div className="flex w-full flex-row justify-between items-center">
-                    <label for="depth">Depth</label>
-                    <input
-                      className="rounded-sm bg-[#2A2A2A] w-[3rem] py-2 outline-none focus:ring-0 focus:border-none text-center ml-5"
-                      type="number"
-                      defaultValue="5"
-                      name="depth"
-                      id="depth"
-                    />
-                  </div>
-                  <br />
-                  <div className="flex w-full flex-row justify-between items-center">
-                    <label for="links-crawled">Links Crawled</label>
-                    <input
-                      className="rounded-sm bg-[#2A2A2A] w-[3rem] py-2 outline-none focus:ring-0 focus:border-none text-center ml-5"
-                      type="number"
-                      defaultValue="5"
-                      name="links-crawled"
-                      id="links-crawled"
-                    />
+          {/* settings grid */}
+          {!loading ? (    
+            <div className="grid gap-4 h-80 w-140">
+              {/* Row 1 */}
+              <div className="grid grid-cols-[45%_52%] h-30 gap-4 w-full">
+                {/* Search Engine */}
+                <div className="bg-[#313131] h-30 rounded-lg flex flex-col justify-center items-center box-border">
+                  <div>
+                    <p className="mb-2">Search Engine:</p>
+                    <label>
+                      Links Generated
+                      <input
+                        className="rounded-sm bg-[#2A2A2A] w-[3rem] py-2 outline-none focus:ring-0 focus:border-none text-center ml-5"
+                        type="number"
+                        defaultValue="5"
+                        name="num-links"
+                      />
+                    </label>
                   </div>
                 </div>
+
+                {/* Data Options */}
+                {/* peer-checked:bg-blue-500 peer-checked:text-white px-4 py-2 rounded */}
+                <div className="bg-[#313131] h-30 rounded-lg flex flex-col justify-center items-center box-border">
+                  <p>Data Options:</p>
+                  <div>
+                    <input
+                      type="radio"
+                      name="data-option"
+                      defaultValue="api-only"
+                      className="peer"
+                    />
+                    <span className="">API Only</span>
+                  </div>
+
+                  <div>
+                    <input
+                      type="radio"
+                      name="data-option"
+                      defaultValue="website-only"
+                      className="peer"
+                    />
+                    <span className="">Website Only</span>
+                  </div>
+
+                  <div>
+                    <input
+                      type="radio"
+                      name="data-option"
+                      defaultValue="show-all"
+                      className="peer"
+                    />
+                    <span className="">Show All</span>
+                  </div>
+                </div>
+              </div>{" "}
+              {/* End of Row 1 */}
+              {/* Row 2 */}
+              <div className="grid grid-cols-[60%_37%] h-45 gap-4 ">
+                {/* Output */}
+                <div className="bg-[#313131] h-45 rounded-lg flex flex-col justify-center items-center box-border">
+                  <p>Output:</p>
+                  <input type="radio" name="output" defaultValue="structured" />
+                  <span>
+                    {" "}
+                    Structured:
+                    <select>
+                      <option>JSON</option>
+                      <option>XML</option>
+                      <option>YAML</option>
+                    </select>
+                  </span>
+
+                  <input
+                    type="radio"
+                    name="output"
+                    defaultValue="semi-structured"
+                  />
+                  <span>
+                    {" "}
+                    Semi-Structured: Raw +
+                    <select>
+                      <option>JSON</option>
+                      <option>XML</option>
+                      <option>YAML</option>
+                    </select>
+                  </span>
+
+                  <input type="radio" name="output" defaultValue="raw" />
+                  <span> Raw </span>
+                </div>
+
+                {/* Crawler settings */}
+                <div className="bg-[#313131] h-45 rounded-lg flex flex-col justify-center items-center box-border">
+                  <div>
+                    <p className="mb-4">Crawler Settings:</p>
+                    <div className="flex w-full flex-row justify-between items-center">
+                      <label for="depth">Depth</label>
+                      <input
+                        className="rounded-sm bg-[#2A2A2A] w-[3rem] py-2 outline-none focus:ring-0 focus:border-none text-center ml-5"
+                        type="number"
+                        defaultValue="5"
+                        name="depth"
+                        id="depth"
+                      />
+                    </div>
+                    <br />
+                    <div className="flex w-full flex-row justify-between items-center">
+                      <label for="links-crawled">Links Crawled</label>
+                      <input
+                        className="rounded-sm bg-[#2A2A2A] w-[3rem] py-2 outline-none focus:ring-0 focus:border-none text-center ml-5"
+                        type="number"
+                        defaultValue="5"
+                        name="links-crawled"
+                        id="links-crawled"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>{" "}
-            {/* End of Row 2 */}
-          </div>{" "}
-          {/* End of Grid */}
+
+              {/* End of Row 2 */}
+            </div>
+          ) : (
+            <LoadingScreen onCancel={cancelLoading} />
+          )}
         </form>
         <SearchMessageErrors errors={errors} onClose={() => setErrors([])} />
-      </main>
+        </main>
     </>
   );
 }
