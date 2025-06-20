@@ -5,7 +5,7 @@ import Select from "react-select";
 import SearchMessageErrors from "../Components/SearchMessageErrors";
 import MockResults from "../mock-data/mock-data.json";
 
-function Search() {
+function Search({onSearchSubmit}) {
   // form options for error checking + handling output
   const [options, setOptions] = React.useState([]);
   const [errors, setErrors] = React.useState([]);
@@ -98,7 +98,7 @@ function Search() {
     // filter validated data based on selected options
     let dataOptionResults = []
 
-    if (errs) {
+    if (errs.length == 0) {
       // filter by data type
       if (data["data-option"] === "api-only") {
         dataOptionResults = MockResults.filter(item => item["type"] === "api");
@@ -110,8 +110,9 @@ function Search() {
 
       // select number of links
       const filteredResults = dataOptionResults.slice(0, data["num-links"]);
-      // console.log(filteredResults)
+      // console.log(filteredResults);
 
+      // add file type option to data object
       let fileType;
       if (data.output === "structured") {
         fileType = data["structured[file-type]"];
@@ -121,6 +122,13 @@ function Search() {
       data["file-type"] = fileType;
       delete data["structured[file-type]"];
       delete data["semi-structured[file-type]"];
+
+      // add filtered search results to data object
+      data["search-results"] = filteredResults
+
+      // pass data to App.jsx
+      onSearchSubmit(data);
+      
     }
 
   }
