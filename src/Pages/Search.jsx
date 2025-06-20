@@ -4,7 +4,7 @@ import SearchMessageErrors from "../Components/SearchMessageErrors";
 import LoadingScreen from "../Components/LoadingScreen";
 
 
-function Search() {
+function Search({onSearchSubmit}) {
   // form options for error checking + handling output
   const [options, setOptions] = React.useState([]);
   const [errors, setErrors] = React.useState([]);
@@ -105,9 +105,8 @@ function Search() {
 
     // filter validated data based on selected options
     let dataOptionResults = []
-    if (!data.output) {
-      // console.log(data);
 
+    if (errs.length == 0) {
       // filter by data type
       if (data["data-option"] === "api-only") {
         dataOptionResults = MockResults.filter(item => item["type"] === "api");
@@ -119,8 +118,27 @@ function Search() {
 
       // select number of links
       const filteredResults = dataOptionResults.slice(0, data["num-links"]);
-      console.log(filteredResults)
+      // console.log(filteredResults);
+
+      // add file type option to data object
+      let fileType;
+      if (data.output === "structured") {
+        fileType = data["structured[file-type]"];
+      } else if (data.output === "semi-structured") {
+        fileType = data["semi-structured[file-type]"];
+      }
+      data["file-type"] = fileType;
+      delete data["structured[file-type]"];
+      delete data["semi-structured[file-type]"];
+
+      // add filtered search results to data object
+      data["search-results"] = filteredResults
+
+      // pass data to App.jsx
+      onSearchSubmit(data);
+      
     }
+
   }
 
   const cancelLoading = () => {
@@ -249,13 +267,15 @@ function Search() {
                   <p>Output:</p>
                   <input type="radio" name="output" defaultValue="structured" />
                   <span>
-                    {" "}
-                    Structured:
-                    <select>
-                      <option>JSON</option>
-                      <option>XML</option>
-                      <option>YAML</option>
-                    </select>
+                    <label for="structured">
+                      {" "}
+                      Structured:
+                      <select name="structured[file-type]">
+                        <option value="json">JSON</option>
+                        <option value="xml">XML</option>
+                        <option value="yaml">YAML</option>
+                      </select>
+                    </label>
                   </span>
 
                   <input
@@ -266,11 +286,11 @@ function Search() {
                   <span>
                     {" "}
                     Semi-Structured: Raw +
-                    <select>
-                      <option>JSON</option>
-                      <option>XML</option>
-                      <option>YAML</option>
-                    </select>
+                  <select name="semi-structured[file-type]">
+                    <option value="json">JSON</option>
+                    <option value="xml">XML</option>
+                    <option value="yaml">YAML</option>
+                  </select>
                   </span>
 
                   <input type="radio" name="output" defaultValue="raw" />
