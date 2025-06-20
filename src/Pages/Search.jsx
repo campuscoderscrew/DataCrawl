@@ -3,6 +3,7 @@ import Select from "react-select";
 import SearchMessageErrors from "../Components/SearchMessageErrors";
 import LoadingScreen from "../Components/LoadingScreen";
 
+
 function Search() {
   // form options for error checking + handling output
   const [options, setOptions] = React.useState([]);
@@ -102,6 +103,24 @@ function Search() {
       setLoading(true);
     }
 
+    // filter validated data based on selected options
+    let dataOptionResults = []
+    if (!data.output) {
+      // console.log(data);
+
+      // filter by data type
+      if (data["data-option"] === "api-only") {
+        dataOptionResults = MockResults.filter(item => item["type"] === "api");
+      } else if (data["data-option"] === "website-only") {
+        dataOptionResults = MockResults.filter(item => item["type"] === "website");
+      } else {
+        dataOptionResults = MockResults;
+      }
+
+      // select number of links
+      const filteredResults = dataOptionResults.slice(0, data["num-links"]);
+      console.log(filteredResults)
+    }
   }
 
   const cancelLoading = () => {
