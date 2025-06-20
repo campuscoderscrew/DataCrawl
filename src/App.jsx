@@ -9,10 +9,12 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path="/" exact Component={Search} />
-        <Route path="/results" exact Component={Results} />
-      </Routes>
+      <div className="content">
+        <Routes>
+          <Route path="/" exact Component={Search} />
+          <Route path="/results" exact Component={Results} />
+        </Routes>
+      </div>
     </Router>
   );
 }
