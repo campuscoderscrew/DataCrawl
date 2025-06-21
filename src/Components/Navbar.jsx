@@ -14,35 +14,33 @@ function Navbar() {
 
       // Menu Items with Background Button
       <div className="mr-15">
-        <a href="#" class="p-3 px-6 pt-2 text-white bg-gray-700 rounded-full baseline">
-          <ul className="grid grid-cols-3 gap-25">
-            <li>
-              <Link to="/Usage" className="text-white hover:text-gray-400">
-                Usage
-              </Link>
-            </li>
-            <li>
-              <Link to="/About" className="text-white hover:text-gray-400">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link to="/Support" className="text-white hover:text-gray-400">
-                Support
-              </Link>
-            </li>
-            <li>
-              <Link to="/Investors" className="text-white hover:text-gray-400">
-                Investors
-              </Link>
-            </li>
-            <li>
-              <Link to="/Team" className="text-white hover:text-gray-400">
-                Team
-              </Link>
-            </li>
-          </ul>
-        </a>
+        <ul className="grid grid-cols-3 gap-25">
+          <li>
+            <Link to="/Usage" className="text-white hover:text-gray-400">
+              Usage
+            </Link>
+          </li>
+          <li>
+            <Link to="/About" className="text-white hover:text-gray-400">
+              About
+            </Link>
+          </li>
+          <li>
+            <Link to="/Support" className="text-white hover:text-gray-400">
+              Support
+            </Link>
+          </li>
+          <li>
+            <Link to="/Investors" className="text-white hover:text-gray-400">
+              Investors
+            </Link>
+          </li>
+          <li>
+            <Link to="/Team" className="text-white hover:text-gray-400">
+              Team
+            </Link>
+          </li>
+        </ul>
       </div>
     </nav>
   );
