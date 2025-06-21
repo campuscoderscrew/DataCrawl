@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav className="p-4 bg-transparent text-white w-full flex justify-between items-center absolute top-0 z-1000">
       {/* Logo & Company Name */}
-      <div className="ml-15 flex items-center space-x-1">
+      <div className="ml-15 flex items-center space-x-3">
         <img src = "Logo-basic.svg" alt="" />
         <Link to="/" className="text-white hover:text-gray-400">
           <h1>DataCrawl</h1>
@@ -17,29 +17,29 @@ function Navbar() {
         <a href="#" class="p-3 px-6 pt-2 text-white">
           <ul className="grid grid-cols-5 gap-20">
             <li>
-              <Link to="/Usage" className="text-white hover:text-gray-400">
+              <span className="text-white hover:text-gray-400">
                 Usage
-              </Link>
+              </span>
             </li>
             <li>
-              <Link to="/About" className="text-white hover:text-gray-400">
+              <span className="text-white hover:text-gray-400">
                 About
-              </Link>
+              </span>
             </li>
             <li>
-              <Link to="/Support" className="text-white hover:text-gray-400">
+              <span className="text-white hover:text-gray-400">
                 Support
-              </Link>
+              </span>
             </li>
             <li>
-              <Link to="/Investors" className="text-white hover:text-gray-400">
+              <span className="text-white hover:text-gray-400">
                 Investors
-              </Link>
+              </span>
             </li>
             <li>
-              <Link to="/Team" className="text-white hover:text-gray-400">
+              <span className="text-white hover:text-gray-400">
                 Team
-              </Link>
+              </span>
             </li>
           </ul>
         </a>
