@@ -237,9 +237,9 @@ const Results = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex" style={{ paddingTop: '20px' }}>
+    <div className="min-h-screen bg-gray-100 flex " style={{ paddingTop: '20px' }}>
       {/* Sidebar */}
-      <aside className="w-64 bg-white shadow-lg p-6" style={{ paddingRight: '20px' }}>
+      <aside className="py-22 w-64 bg-white shadow-lg p-6" style={{ paddingRight: '20px' }}>
         {/* Logo */}
         <header className="mb-6">
           <div className="bg-gray-400 rounded-lg px-4 py-2 text-center">
@@ -351,7 +351,7 @@ const Results = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8 bg-gray-50">
+      <main className="py-22 flex-1 p-8 bg-gray-50">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
 
           {/* Header AND Sorting Controls */}
