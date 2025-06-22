@@ -7,6 +7,7 @@ function Navbar() {
       {/* Logo & Company Name */}
       <div className="ml-15 flex items-center space-x-3">
         <img src = "Logo-basic.svg" alt="" />
+
         <Link to="/" className="text-white hover:text-gray-400">
           <h1>DataCrawl</h1>
         </Link>
