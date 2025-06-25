@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Search from "./Pages/Search";
 import Results from "./Pages/Results";
 import Navbar from "./Components/Navbar";
+import Login from "./Pages/Login";
 
 function App() {
   const [data, setData] = React.useState([]);
@@ -17,6 +18,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
+        <Route path="/" exact element={<Login />} />
         <Route
           path="/search"
           exact
