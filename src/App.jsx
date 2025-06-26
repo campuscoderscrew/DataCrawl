@@ -5,7 +5,7 @@ import Search from "./Pages/Search";
 import Results from "./Pages/Results";
 import Landing from "./Pages/Landing";
 import Navbar from "./Components/Navbar";
-
+import Login from "./Pages/Login";
 
 function App() {
   const [data, setData] = React.useState([]);
@@ -14,6 +14,7 @@ function App() {
     console.log("Data received in App component:", formData);
     setData(formData);
   }
+
 
   return (
     <Router>
