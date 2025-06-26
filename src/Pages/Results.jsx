@@ -1,14 +1,16 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import yaml from 'js-yaml';
-import { 
-  Eye, 
-  Download, 
-  Calendar, 
-  Globe, 
-  Layers, 
-  ChevronDown, 
-  Database 
+import {
+  Eye,
+  Download,
+  Calendar,
+  Globe,
+  Layers,
+  ChevronDown,
+  Database
 } from 'lucide-react';
+
+import Navbar from "../Components/Navbar"
 
 // File imports
 import jsonData from '../mock-data/mock-data.json';
@@ -54,7 +56,7 @@ const Results = () => {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(xmlData, "application/xml");
             const items = Array.from(xmlDoc.getElementsByTagName("item"));
-            
+
             parsedData = items.map(item => ({
               id: parseInt(item.querySelector("id")?.textContent || '0', 10),
               name: item.querySelector("name")?.textContent || '',
@@ -96,7 +98,7 @@ const Results = () => {
 
   const isWithinDateRange = (item) => {
     if (!item.date) return true;
-    
+
     const itemDate = parseDate(item.date);
     if (!itemDate) return true;
 
@@ -106,16 +108,16 @@ const Results = () => {
     switch (filters.dateRange) {
       case DATE_RANGES.SEVEN_DAYS:
         return now - itemDate <= 7 * millisecondsPerDay;
-      
+
       case DATE_RANGES.THIRTY_DAYS:
         return now - itemDate <= 30 * millisecondsPerDay;
-      
+
       case DATE_RANGES.CUSTOM:
         const startDate = parseDate(filters.startDate);
         const endDate = parseDate(filters.endDate);
         if (!startDate || !endDate) return true;
         return itemDate >= startDate && itemDate <= endDate;
-      
+
       default:
         return true;
     }
@@ -237,7 +239,9 @@ const Results = () => {
   };
 
   return (
+
     <div className="min-h-screen bg-gray-100 flex " style={{ paddingTop: '20px' }}>
+      <Navbar />
       {/* Sidebar */}
       <aside className="py-22 w-64 bg-white shadow-lg p-6" style={{ paddingRight: '20px' }}>
         {/* Logo */}
@@ -276,11 +280,10 @@ const Results = () => {
               <button
                 key={value}
                 onClick={() => handleFilterChange('dataSource', value)}
-                className={`w-full px-4 py-2 rounded-md text-left text-sm font-medium transition-all duration-200 ${
-                  filters.dataSource === value 
-                    ? 'bg-blue-100 text-blue-800 border-2 border-blue-300 shadow-md' 
-                    : 'bg-gray-50 text-gray-700 border border-gray-200 hover:bg-gray-100 hover:shadow-sm'
-                }`}
+                className={`w-full px-4 py-2 rounded-md text-left text-sm font-medium transition-all duration-200 ${filters.dataSource === value
+                  ? 'bg-blue-100 text-blue-800 border-2 border-blue-300 shadow-md'
+                  : 'bg-gray-50 text-gray-700 border border-gray-200 hover:bg-gray-100 hover:shadow-sm'
+                  }`}
               >
                 {label}
               </button>
@@ -358,7 +361,7 @@ const Results = () => {
           <header className="px-6 py-4 border-b border-gray-200 bg-white">
             <div className="flex justify-between items-center">
               <h1 className="text-xl font-bold text-gray-900">Search Results</h1>
-              
+
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-2">
                   <label className="text-sm font-medium text-gray-600">Sort by:</label>
@@ -372,7 +375,7 @@ const Results = () => {
                     <option value="size">Size</option>
                   </select>
                 </div>
-                
+
                 <div className="flex items-center space-x-2">
                   <label className="text-sm font-medium text-gray-600">Order:</label>
                   <select
@@ -384,7 +387,7 @@ const Results = () => {
                     <option value="asc">Ascending</option>
                   </select>
                 </div>
-                
+
                 <ChevronDown className="w-4 h-4 text-gray-400" />
               </div>
             </div>
@@ -423,20 +426,20 @@ const Results = () => {
               </div>
             ) : (
               paginatedData.map((item, index) => (
-                <div 
-                  key={item.id || index} 
+                <div
+                  key={item.id || index}
                   className="grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-gray-50 transition-colors duration-150"
                 >
                   <div className="col-span-1 text-sm font-medium text-gray-900">
                     {item.id}
                   </div>
-                  
+
                   <div className="col-span-3">
                     <p className="text-sm font-medium text-gray-900 truncate" title={item.name}>
                       {item.name}
                     </p>
                   </div>
-                  
+
                   <div className="col-span-3 flex items-center space-x-3">
                     <span className="text-sm font-semibold text-gray-900 min-w-[2rem]">
                       {getRelevanceScore(item.relevance)}%
@@ -448,18 +451,18 @@ const Results = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="col-span-2 flex items-center space-x-2">
                     {getSourceIcon(item.type)}
                     <span className="text-sm font-medium text-gray-700">
                       {getSourceLabel(item.type)}
                     </span>
                   </div>
-                  
+
                   <div className="col-span-1 text-sm text-gray-600">
                     {item.size || 'N/A'}
                   </div>
-                  
+
                   <div className="col-span-2 flex space-x-2">
                     <button
                       onClick={() => handleViewItem(item.viewUrl)}
@@ -491,7 +494,7 @@ const Results = () => {
                   Showing {Math.min((currentPage - 1) * ITEMS_PER_PAGE + 1, filteredData.length)} to{' '}
                   {Math.min(currentPage * ITEMS_PER_PAGE, filteredData.length)} of {filteredData.length} results
                 </p>
-                
+
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={() => handlePageChange(currentPage - 1)}
@@ -500,11 +503,11 @@ const Results = () => {
                   >
                     Previous
                   </button>
-                  
+
                   <span className="text-sm font-medium text-gray-700 px-4">
                     Page {currentPage} of {totalPages}
                   </span>
-                  
+
                   <button
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}
