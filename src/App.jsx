@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Search from "./Pages/Search";
 import Results from "./Pages/Results";
 import Navbar from "./Components/Navbar";
-
+import Login from "./Pages/Login";
 
 function App() {
   const [data, setData] = React.useState([]);
@@ -12,13 +12,18 @@ function App() {
   const handleData = (formData) => {
     console.log("Data received in App component:", formData);
     setData(formData);
-  }
-  
+  };
+
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" exact element={<Search onSearchSubmit={handleData} />} />
+        <Route path="/" exact element={<Login />} />
+        <Route
+          path="/search"
+          exact
+          element={<Search onSearchSubmit={handleData} />}
+        />
         <Route path="/results" exact element={<Results resultsData={data} />} />
       </Routes>
     </Router>
