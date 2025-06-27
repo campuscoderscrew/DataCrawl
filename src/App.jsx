@@ -5,7 +5,6 @@ import Search from "./Pages/Search";
 import Results from "./Pages/Results";
 import Landing from "./Pages/Landing";
 import Navbar from "./Components/Navbar";
-import Login from "./Pages/Login";
 
 function App() {
   const [data, setData] = React.useState([]);

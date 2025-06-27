@@ -8,7 +8,7 @@ function Navbar() {
       <div className="ml-15 flex items-center space-x-3">
         <img src = "Logo-basic.svg" alt="" />
 
-        <Link to="/" className="text-white hover:text-gray-400">
+        <Link to="/" className="text-white hover:text-gray-400 font-semibold">
           <h1>DataCrawl</h1>
         </Link>
       </div>
