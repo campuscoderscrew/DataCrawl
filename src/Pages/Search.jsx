@@ -103,21 +103,11 @@ function Search({ onSearchSubmit }) {
     }
 
     // filter validated data based on selected options
-    let dataOptionResults = []
-
     if (errs.length == 0) {
-      // filter by data type
-      if (data["data-option"] === "api-only") {
-        dataOptionResults = MockResults.filter(item => item["type"] === "api");
-      } else if (data["data-option"] === "website-only") {
-        dataOptionResults = MockResults.filter(item => item["type"] === "website");
-      } else {
-        dataOptionResults = MockResults;
-      }
-
-      // select number of links
-      const filteredResults = dataOptionResults.slice(0, data["num-links"]);
-      // console.log(filteredResults);
+      // type conversion: Strings to Numbers
+      data["depth"] = Number(data["depth"]);
+      data["links-crawled"] = Number(data["links-crawled"]);
+      data["num-links"] = Number(data["num-links"]);
 
       // add file type option to data object
       let fileType;
@@ -129,9 +119,6 @@ function Search({ onSearchSubmit }) {
       data["file-type"] = fileType;
       delete data["structured[file-type]"];
       delete data["semi-structured[file-type]"];
-
-      // add filtered search results to data object
-      data["search-results"] = filteredResults
 
       // pass data to App.jsx
       onSearchSubmit(data);
@@ -230,19 +217,19 @@ function Search({ onSearchSubmit }) {
                   <div className="flex flex-row box-border rounded-sm  mt-5">
 
                     <div>
-                      <input type="radio" name="data-option" defaultValue="api-only" id="api-only" className=" hidden peer" />
+                      <input type="radio" name="data-option" defaultValue="api" id="api-only" className=" hidden peer" />
 
                       <label className="text-sm peer-checked:bg-[#2A2A2A] rounded-l-md bg-[#3E3E3E] p-2.5 hover:cursor-pointer hover:bg-[#2A2A2A] px-4 border-r-1 border-[#2A2A2A]" htmlFor="api-only"> API Only </label>
                     </div>
 
                     <div>
-                      <input type="radio" name="data-option" defaultValue="website-only" id="website-only" className=" hidden peer" />
+                      <input type="radio" name="data-option" defaultValue="website" id="website-only" className=" hidden peer" />
 
                       <label className="text-sm peer-checked:bg-[#2A2A2A] bg-[#3E3E3E] p-2.5 hover:cursor-pointer hover:bg-[#2A2A2A] px-4 border-r-1 border-[#2A2A2A]" htmlFor="website-only"> Website Only </label>
                     </div>
 
                     <div>
-                      <input type="radio" name="data-option" defaultValue="show-all" id="show-all" className=" hidden peer" />
+                      <input type="radio" name="data-option" defaultValue="all" id="show-all" className=" hidden peer" />
 
                       <label className="text-sm h-full p-2.5 px-4 peer-checked:bg-[#2A2A2A] bg-[#3E3E3E] hover:cursor-pointer hover:bg-[#2A2A2A] rounded-r-md" htmlFor="show-all"> Show All </label>
                     </div>

@@ -17,13 +17,24 @@ import jsonData from '../mock-data/mock-data.json';
 import yamlData from '../mock-data/mock-data.yaml?raw';
 import xmlData from '../mock-data/mock-data.xml?raw';
 
-const Results = () => {
+const Results = (props) => {
+
+  // Constants
+  const SEARCH_CRITERIA = props.searchCriteria;
+  const ITEMS_PER_PAGE = 10;
+  const MAX_TOTAL_ITEMS = SEARCH_CRITERIA["num-links"];
+  const DATE_RANGES = {
+    SEVEN_DAYS: '7days',
+    THIRTY_DAYS: '30days',
+    CUSTOM: 'custom'
+  };
+  const INITIAL_DATA_SOURCE = SEARCH_CRITERIA["data-option"];
 
   // State management
   const [data, setData] = useState([]);
-  const [sourceType, setSourceType] = useState('yaml');
+  const [sourceType, setSourceType] = useState(SEARCH_CRITERIA["file-type"]);
   const [filters, setFilters] = useState({
-    dataSource: 'all',
+    dataSource: INITIAL_DATA_SOURCE,
     dateRange: '7days',
     startDate: '',
     endDate: '',
@@ -31,14 +42,6 @@ const Results = () => {
   const [sortBy, setSortBy] = useState('relevance');
   const [sortOrder, setSortOrder] = useState('desc');
   const [currentPage, setCurrentPage] = useState(1);
-
-  // Constants
-  const ITEMS_PER_PAGE = 10;
-  const DATE_RANGES = {
-    SEVEN_DAYS: '7days',
-    THIRTY_DAYS: '30days',
-    CUSTOM: 'custom'
-  };
 
   // Data loading effect
   useEffect(() => {
@@ -78,7 +81,14 @@ const Results = () => {
             parsedData = [];
         }
 
-        setData(parsedData);
+        let updatedParsedData = parsedData;
+        if (INITIAL_DATA_SOURCE !== 'all') {
+          updatedParsedData = parsedData.filter(item => item.type === INITIAL_DATA_SOURCE);
+        }
+
+        let slicedData = updatedParsedData.slice(0, MAX_TOTAL_ITEMS);
+
+        setData(slicedData);
         setCurrentPage(1);
       } catch (error) {
         console.error(`Error loading ${sourceType.toUpperCase()} data:`, error);
