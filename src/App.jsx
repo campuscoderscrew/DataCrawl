@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route path="/" exact element={<Landing />} />
         <Route path="/search" exact element={<Search onSearchSubmit={handleData} />} />
-        <Route path="/results" exact element={<Results resultsData={data} />} />
+        <Route path="/results" exact element={<Results searchCriteria={data} />} />
       </Routes>
     </Router>
   );
