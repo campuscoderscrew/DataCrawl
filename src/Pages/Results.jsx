@@ -368,13 +368,13 @@ const Results = (props) => {
 
         {/* Search Bar */}
         <div
-          className="search-bar mb-5 rounded-full flex flex-row items-center"
+          className="search-bar px-2 py-2 mb-5 rounded-full flex flex-row items-center"
           style={{
             backgroundColor: 'white'
           }}
         >
           <div
-            className="flex items-center justify-center h-10 w-10 bg-gray-200 rounded-l-full"
+            className="flex items-center justify-center h-10 w-10 bg-gray-200 rounded-full"
           >
             <img
               src="https://cdn.pixabay.com/photo/2017/01/13/01/22/magnifying-glass-1976105_1280.png"
@@ -388,7 +388,7 @@ const Results = (props) => {
               name="search"
               placeholder="filter results..."
               className="focus:outline-none w-full"
-              style={{ paddingLeft: '10px' }}
+              style={{ paddingLeft: '20px' }}
             />
           </div>
           <button className="ml-4 bg-[#313131] py-2 px-6 rounded-full hover:cursor-pointer hover:bg-[#2C2C2C] text-white font-semibold transition">
