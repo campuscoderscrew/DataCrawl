@@ -28,6 +28,7 @@ const Results = (props) => {
     THIRTY_DAYS: '30days',
     CUSTOM: 'custom'
   };
+
   const INITIAL_DATA_SOURCE = SEARCH_CRITERIA["data-option"];
 
   // State management
@@ -52,7 +53,7 @@ const Results = (props) => {
         switch (sourceType) {
           case 'yaml':
             const parsedYaml = yaml.load(yamlData);
-            parsedData = Array.isArray(parsedYaml?.items) ? parsedYaml.items : [];
+            parsedData = Array.isArray(parsedYaml?.items) ? parsedYaml.items : [];   
             break;
 
           case 'xml':
@@ -89,6 +90,8 @@ const Results = (props) => {
         let slicedData = updatedParsedData.slice(0, MAX_TOTAL_ITEMS);
 
         setData(slicedData);
+        console.log("Setting data:", slicedData);
+
         setCurrentPage(1);
       } catch (error) {
         console.error(`Error loading ${sourceType.toUpperCase()} data:`, error);
@@ -427,7 +430,7 @@ const Results = (props) => {
 
           {/* Results Table Body */}
           <div className="divide-y divide-gray-200">
-            {paginatedData.length === 0 ? (
+            { paginatedData.length === 0 ? (
               <div className="p-8 text-center">
                 <p className="text-gray-500 text-lg">No results found</p>
                 <p className="text-gray-400 text-sm mt-1">
