@@ -174,10 +174,10 @@ const Results = (props) => {
 
       switch (sortBy) {
         case 'relevance':
-          comparison = b.relevance - a.relevance;
+          comparison = a.relevance - b.relevance;
           break;
         case 'name':
-          comparison = a.name.localeCompare(b.name);
+          comparison = b.name.localeCompare(a.name); // a->z DESCENDING, z->a ASCENDING
           break;
         case 'size':
           comparison = parseFloat(a.size || '0') - parseFloat(b.size || '0');
