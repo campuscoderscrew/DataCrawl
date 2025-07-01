@@ -135,11 +135,11 @@ const Results = () => {
   const getSourceIcon = (type) => {
     switch (type) {
       case 'api':
-        return <Database className="w-4 h-4 text-gray-100" />;
+        return <Database className="w-4 h-4 text-gray-500" />;
       case 'website':
-        return <Globe className="w-4 h-4 text-gray-100" />;
+        return <Globe className="w-4 h-4 text-gray-500" />;
       default:
-        return <Layers className="w-4 h-4 text-gray-100" />;
+        return <Layers className="w-4 h-4 text-gray-500" />;
     }
   };
 
@@ -240,10 +240,10 @@ const Results = () => {
 
   return (
 
-    <div className="min-h-screen bg-[#474747] flex " style={{ paddingTop: '20px' }}>
+    <div className="min-h-screen bg-[#252525] flex " style={{ paddingTop: '20px' }}>
       <Navbar />
       {/* Sidebar */}
-      <aside className="py-22 w-64 bg-[#474747] shadow-lg p-6" style={{ paddingRight: '20px' }}>
+      <aside className="py-22 w-64 bg-[#313131] shadow-lg p-6" style={{ paddingRight: '20px' }}>
         {/* Logo */}
         <header className="mb-6">
           <div className="bg-[#676464] rounded-lg px-4 py-2 text-center">
@@ -260,7 +260,7 @@ const Results = () => {
             id="sourceTypeSelect"
             value={sourceType}
             onChange={(e) => handleSourceTypeChange(e.target.value)}
-            className="w-full border border-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+            className="w-full border border-white rounded-md px-3 py-2 bg-[#313131] text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
           >
             <option value="yaml">YAML</option>
             <option value="xml">XML</option>
@@ -281,8 +281,8 @@ const Results = () => {
                 key={value}
                 onClick={() => handleFilterChange('dataSource', value)}
                 className={`w-full px-4 py-2 rounded-md text-left text-sm font-medium transition-all duration-200 ${filters.dataSource === value
-                  ? 'bg-gray-300 text-gray-800 border-2 border-gray-300 shadow-md'
-                  : 'bg-gray-50 text-gray-700 border border-gray-200 hover:bg-gray-100 hover:shadow-sm'
+                  ? 'bg-[#3a3a3a] text-white border-2 border-[#3a3a3a] shadow-md'
+                  : 'bg-[#2a2a2a] text-gray-300 border border-[#3a3a3a] hover:text-white hover:shadow-sm'
                   }`}
               >
                 {label}
@@ -466,7 +466,7 @@ const Results = () => {
                   <div className="col-span-2 flex space-x-2">
                     <button
                       onClick={() => handleViewItem(item.viewUrl)}
-                      className="inline-flex items-center px-3 py-1 bg-gray-600 text-white text-xs font-medium rounded-md hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1"
+                      className="inline-flex items-center px-3 py-1 bg-gray-600 text-white text-xs font-medium rounded-md hover:bg-gray-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1"
                       disabled={!item.viewUrl}
                     >
                       <Eye className="w-3 h-3 mr-1" />
@@ -474,7 +474,7 @@ const Results = () => {
                     </button>
                     <button
                       onClick={() => handleDownloadItem(item.downloadUrl)}
-                      className="inline-flex items-center px-3 py-1 bg-gray-600 text-white text-xs font-medium rounded-md hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1"
+                      className="inline-flex items-center px-3 py-1 bg-gray-600 text-white text-xs font-medium rounded-md hover:bg-gray-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1"
                       disabled={!item.downloadUrl}
                     >
                       <Download className="w-3 h-3 mr-1" />
