@@ -368,7 +368,7 @@ const Results = (props) => {
 
       {/* Main Content */}
       <main className="py-22 flex-1 p-8 bg-[#252525]">
-        <div className="bg-[#3E3E3E] shadow-lg rounded-lg overflow-hidden">
+        <div className="bg-[#252525] shadow-lg rounded-lg overflow-hidden">
 
         {/* Search Bar */}
         <div
