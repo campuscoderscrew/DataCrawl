@@ -17,13 +17,25 @@ import jsonData from '../mock-data/mock-data.json';
 import yamlData from '../mock-data/mock-data.yaml?raw';
 import xmlData from '../mock-data/mock-data.xml?raw';
 
-const Results = () => {
+const Results = (props) => {
+
+  // Constants
+  const SEARCH_CRITERIA = props.searchCriteria;
+  const ITEMS_PER_PAGE = 10;
+  const MAX_TOTAL_ITEMS = SEARCH_CRITERIA["num-links"];
+  const DATE_RANGES = {
+    SEVEN_DAYS: '7days',
+    THIRTY_DAYS: '30days',
+    CUSTOM: 'custom'
+  };
+
+  const INITIAL_DATA_SOURCE = SEARCH_CRITERIA["data-option"];
 
   // State management
   const [data, setData] = useState([]);
-  const [sourceType, setSourceType] = useState('yaml');
+  const [sourceType, setSourceType] = useState(SEARCH_CRITERIA["file-type"]);
   const [filters, setFilters] = useState({
-    dataSource: 'all',
+    dataSource: INITIAL_DATA_SOURCE,
     dateRange: '7days',
     startDate: '',
     endDate: '',
@@ -31,14 +43,6 @@ const Results = () => {
   const [sortBy, setSortBy] = useState('relevance');
   const [sortOrder, setSortOrder] = useState('desc');
   const [currentPage, setCurrentPage] = useState(1);
-
-  // Constants
-  const ITEMS_PER_PAGE = 10;
-  const DATE_RANGES = {
-    SEVEN_DAYS: '7days',
-    THIRTY_DAYS: '30days',
-    CUSTOM: 'custom'
-  };
 
   // Data loading effect
   useEffect(() => {
@@ -49,7 +53,7 @@ const Results = () => {
         switch (sourceType) {
           case 'yaml':
             const parsedYaml = yaml.load(yamlData);
-            parsedData = Array.isArray(parsedYaml?.items) ? parsedYaml.items : [];
+            parsedData = Array.isArray(parsedYaml?.items) ? parsedYaml.items : [];   
             break;
 
           case 'xml':
@@ -78,7 +82,16 @@ const Results = () => {
             parsedData = [];
         }
 
-        setData(parsedData);
+        let updatedParsedData = parsedData;
+        if (INITIAL_DATA_SOURCE !== 'all') {
+          updatedParsedData = parsedData.filter(item => item.type === INITIAL_DATA_SOURCE);
+        }
+
+        let slicedData = updatedParsedData.slice(0, MAX_TOTAL_ITEMS);
+
+        setData(slicedData);
+        console.log("Setting data:", slicedData);
+
         setCurrentPage(1);
       } catch (error) {
         console.error(`Error loading ${sourceType.toUpperCase()} data:`, error);
@@ -161,10 +174,10 @@ const Results = () => {
 
       switch (sortBy) {
         case 'relevance':
-          comparison = b.relevance - a.relevance;
+          comparison = a.relevance - b.relevance;
           break;
         case 'name':
-          comparison = a.name.localeCompare(b.name);
+          comparison = b.name.localeCompare(a.name); // a->z DESCENDING, z->a ASCENDING
           break;
         case 'size':
           comparison = parseFloat(a.size || '0') - parseFloat(b.size || '0');
@@ -357,6 +370,37 @@ const Results = () => {
       <main className="py-22 flex-1 p-8 bg-[#252525]">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
 
+        {/* Search Bar */}
+        <div
+          className="search-bar px-2 py-2 mb-5 rounded-full flex flex-row items-center"
+          style={{
+            backgroundColor: 'white'
+          }}
+        >
+          <div
+            className="flex items-center justify-center h-10 w-10 bg-gray-200 rounded-full"
+          >
+            <img
+              src="https://cdn.pixabay.com/photo/2017/01/13/01/22/magnifying-glass-1976105_1280.png"
+              alt="magnifying glass :D"
+              style={{ width: '20px', height: '20px' }}
+            />
+          </div>
+          <div className="flex flex-row flex-1">
+            <input
+              type="text"
+              name="search"
+              placeholder="filter results..."
+              className="focus:outline-none w-full"
+              style={{ paddingLeft: '20px' }}
+            />
+          </div>
+          <button className="ml-4 bg-[#313131] py-2 px-6 rounded-full hover:cursor-pointer hover:bg-[#2C2C2C] text-white font-semibold transition">
+            Sort
+          </button>
+        </div>
+
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           {/* Header AND Sorting Controls */}
           <header className="px-6 py-4 border-b border-gray-200 bg-white">
             <div className="flex justify-between items-center">
@@ -417,7 +461,7 @@ const Results = () => {
 
           {/* Results Table Body */}
           <div className="divide-y divide-gray-200">
-            {paginatedData.length === 0 ? (
+            { paginatedData.length === 0 ? (
               <div className="p-8 text-center">
                 <p className="text-gray-500 text-lg">No results found</p>
                 <p className="text-gray-400 text-sm mt-1">
