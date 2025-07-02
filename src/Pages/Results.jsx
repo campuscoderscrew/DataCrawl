@@ -368,13 +368,13 @@ const Results = (props) => {
 
       {/* Main Content */}
       <main className="py-22 flex-1 p-8 bg-[#252525]">
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="bg-[#3E3E3E] shadow-lg rounded-lg overflow-hidden">
 
         {/* Search Bar */}
         <div
           className="search-bar px-2 py-2 mb-5 rounded-full flex flex-row items-center"
           style={{
-            backgroundColor: 'white'
+            backgroundColor: '#3E3E3E'
           }}
         >
           <div
@@ -391,7 +391,7 @@ const Results = (props) => {
               type="text"
               name="search"
               placeholder="filter results..."
-              className="focus:outline-none w-full"
+              className="focus:outline-none w-full text-white"
               style={{ paddingLeft: '20px' }}
             />
           </div>
@@ -400,19 +400,19 @@ const Results = (props) => {
           </button>
         </div>
 
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="bg-[#3E3E3E] shadow-lg rounded-lg overflow-hidden">
           {/* Header AND Sorting Controls */}
-          <header className="px-6 py-4 border-b border-gray-200 bg-white">
+          <header className="px-6 py-4 border-b border-gray-200 bg-[#3E3E3E]">
             <div className="flex justify-between items-center">
-              <h1 className="text-xl font-bold text-[#252525]">Search Results</h1>
+              <h1 className="text-xl font-bold text-white">Search Results</h1>
 
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-2">
-                  <label className="text-sm font-medium text-gray-600">Sort by:</label>
+                  <label className="text-sm font-medium text-white">Sort by:</label>
                   <select
                     value={sortBy}
                     onChange={(e) => handleSortChange(e.target.value, sortOrder)}
-                    className="text-sm border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                    className="text-sm border border-white rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent text-white"
                   >
                     <option value="relevance">Relevance</option>
                     <option value="name">Name</option>
@@ -421,11 +421,11 @@ const Results = (props) => {
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <label className="text-sm font-medium text-gray-600">Order:</label>
+                  <label className="text-sm font-medium text-white">Order:</label>
                   <select
                     value={sortOrder}
                     onChange={(e) => handleSortChange(sortBy, e.target.value)}
-                    className="text-sm border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                    className="text-sm border border-white rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent text-white"
                   >
                     <option value="desc">Descending</option>
                     <option value="asc">Ascending</option>
@@ -438,23 +438,23 @@ const Results = (props) => {
           </header>
 
           {/* Results Table Header */}
-          <div className="grid grid-cols-12 gap-4 px-6 py-3 bg-gray-50 border-b border-gray-200">
-            <div className="col-span-1 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+          <div className="grid grid-cols-12 gap-4 px-6 py-3 bg-[#3E3E3E] border-b border-gray-200">
+            <div className="col-span-1 text-xs font-semibold text-white uppercase tracking-wider">
               ID
             </div>
-            <div className="col-span-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+            <div className="col-span-3 text-xs font-semibold text-white uppercase tracking-wider">
               Name
             </div>
-            <div className="col-span-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+            <div className="col-span-3 text-xs font-semibold text-white uppercase tracking-wider">
               Relevance
             </div>
-            <div className="col-span-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+            <div className="col-span-2 text-xs font-semibold text-white uppercase tracking-wider">
               Source
             </div>
-            <div className="col-span-1 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+            <div className="col-span-1 text-xs font-semibold text-white uppercase tracking-wider">
               Size
             </div>
-            <div className="col-span-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+            <div className="col-span-2 text-xs font-semibold text-white uppercase tracking-wider">
               Actions
             </div>
           </div>
@@ -463,8 +463,8 @@ const Results = (props) => {
           <div className="divide-y divide-gray-200">
             { paginatedData.length === 0 ? (
               <div className="p-8 text-center">
-                <p className="text-gray-500 text-lg">No results found</p>
-                <p className="text-gray-400 text-sm mt-1">
+                <p className="text-white text-lg">No results found</p>
+                <p className="text-white text-sm mt-1">
                   Try adjusting your filters or search criteria
                 </p>
               </div>
