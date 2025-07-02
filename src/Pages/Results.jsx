@@ -564,6 +564,7 @@ const Results = (props) => {
             </footer>
           )}
         </div>
+        </div>
       </main>
     </div>
   );
