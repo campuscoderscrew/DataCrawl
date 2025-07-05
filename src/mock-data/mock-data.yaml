@@ -382,11 +382,3 @@ items:
     type: website
     downloadUrl: /downloads/bonappetit.html
     viewUrl: /view/bonappetit
-
-  - id: 49
-    name: https://www.federalreserve.gov/
-    relevance: 0.91
-    size: 1.5 MB
-    type: website
-    downloadUrl: /downloads/federalreserve.html
-    viewUrl
