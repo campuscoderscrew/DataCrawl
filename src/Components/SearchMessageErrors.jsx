@@ -10,7 +10,7 @@ function SearchMessageErrors(props) {
           onClick={props.onClose}
         >
           <div
-            className="bg-black/60 text-red-600 h-90 w-75 py-10 rounded-lg shadow-2xl flex flex-col items-center gap-6 relative"
+            className="bg-black/75 text-red-600 h-95 w-75 py-10 rounded-lg shadow-2xl flex flex-col items-center gap-6 relative"
             onClick={(e) => e.stopPropagation()}
           >
             <h1 className="font-bold text-center">
