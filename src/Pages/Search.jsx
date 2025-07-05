@@ -2,8 +2,7 @@ import React from "react";
 import Select from "react-select";
 import SearchMessageErrors from "../Components/SearchMessageErrors";
 import LoadingScreen from "../Components/LoadingScreen";
-import Navbar from "../Components/Navbar"
-
+import Navbar from "../Components/Navbar";
 
 function Search({ onSearchSubmit }) {
   // form options for error checking + handling output
@@ -93,7 +92,15 @@ function Search({ onSearchSubmit }) {
     if (!data["data-option"]) errs.push("No data search option selected");
     if (data["links-crawled"] < 0 || data["num-links"] < 0 || data["depth"] < 0)
       errs.push("Negative values cannot be selected");
-
+    if (!data["links-crawled"]) {
+      errs.push("Links Crawled needs to be filled out");
+    }
+    if (!data["depth"]) {
+      errs.push("Depth needs to be filled out");
+    }
+    if (!data["num-links"]) {
+      errs.push("Links Generated needs to be filled out");
+    }
     setErrors(errs);
 
     if (!data.output) console.log(data);
@@ -122,9 +129,7 @@ function Search({ onSearchSubmit }) {
 
       // pass data to App.jsx
       onSearchSubmit(data);
-
     }
-
   }
 
   const cancelLoading = () => {
@@ -146,7 +151,6 @@ function Search({ onSearchSubmit }) {
             </p>
           </div>
         </div>
-
 
         <form
           id="settings"
@@ -182,8 +186,10 @@ function Search({ onSearchSubmit }) {
               />
             </div>
 
-            <button className="bg-[#313131] py-3 px-6 rounded-full hover:cursor-pointer hover:bg-[#2C2C2C]"
-              disabled={loading}>
+            <button
+              className="bg-[#313131] py-3 px-6 rounded-full hover:cursor-pointer hover:bg-[#2C2C2C]"
+              disabled={loading}
+            >
               Generate
             </button>
           </div>
@@ -192,7 +198,6 @@ function Search({ onSearchSubmit }) {
             <div className="grid h-80 w-150 gap-4">
               {/* Row 1 */}
               <div className="grid grid-cols-[40%_57%] h-30 box-border gap-[3%] w-full">
-
                 {/* Search Engine */}
                 <div className="bg-[#313131] h-30 rounded-lg flex flex-col justify-center items-center box-border select-box">
                   <div>
@@ -215,25 +220,59 @@ function Search({ onSearchSubmit }) {
                   <p className="text-left w-full px-3">Data Options:</p>
 
                   <div className="flex flex-row box-border rounded-sm  mt-5">
-
                     <div>
-                      <input type="radio" name="data-option" defaultValue="api" id="api-only" className=" hidden peer" />
+                      <input
+                        type="radio"
+                        name="data-option"
+                        defaultValue="api"
+                        id="api-only"
+                        className=" hidden peer"
+                      />
 
-                      <label className="text-sm peer-checked:bg-[#2A2A2A] rounded-l-md bg-[#3E3E3E] p-2.5 hover:cursor-pointer hover:bg-[#2A2A2A] px-4 border-r-1 border-[#2A2A2A]" htmlFor="api-only"> API Only </label>
+                      <label
+                        className="text-sm peer-checked:bg-[#2A2A2A] rounded-l-md bg-[#3E3E3E] p-2.5 hover:cursor-pointer hover:bg-[#2A2A2A] px-4 border-r-1 border-[#2A2A2A]"
+                        htmlFor="api-only"
+                      >
+                        {" "}
+                        API Only{" "}
+                      </label>
                     </div>
 
                     <div>
-                      <input type="radio" name="data-option" defaultValue="website" id="website-only" className=" hidden peer" />
+                      <input
+                        type="radio"
+                        name="data-option"
+                        defaultValue="website"
+                        id="website-only"
+                        className=" hidden peer"
+                      />
 
-                      <label className="text-sm peer-checked:bg-[#2A2A2A] bg-[#3E3E3E] p-2.5 hover:cursor-pointer hover:bg-[#2A2A2A] px-4 border-r-1 border-[#2A2A2A]" htmlFor="website-only"> Website Only </label>
+                      <label
+                        className="text-sm peer-checked:bg-[#2A2A2A] bg-[#3E3E3E] p-2.5 hover:cursor-pointer hover:bg-[#2A2A2A] px-4 border-r-1 border-[#2A2A2A]"
+                        htmlFor="website-only"
+                      >
+                        {" "}
+                        Website Only{" "}
+                      </label>
                     </div>
 
                     <div>
-                      <input type="radio" name="data-option" defaultValue="all" id="show-all" className=" hidden peer" />
+                      <input
+                        type="radio"
+                        name="data-option"
+                        defaultValue="all"
+                        id="show-all"
+                        className=" hidden peer"
+                      />
 
-                      <label className="text-sm h-full p-2.5 px-4 peer-checked:bg-[#2A2A2A] bg-[#3E3E3E] hover:cursor-pointer hover:bg-[#2A2A2A] rounded-r-md" htmlFor="show-all"> Show All </label>
+                      <label
+                        className="text-sm h-full p-2.5 px-4 peer-checked:bg-[#2A2A2A] bg-[#3E3E3E] hover:cursor-pointer hover:bg-[#2A2A2A] rounded-r-md"
+                        htmlFor="show-all"
+                      >
+                        {" "}
+                        Show All{" "}
+                      </label>
                     </div>
-
                   </div>
                 </div>
               </div>{" "}
@@ -242,9 +281,7 @@ function Search({ onSearchSubmit }) {
               <div className="grid grid-cols-[60%_37%] h-45 gap-[3%]">
                 {/* Output */}
                 <div className="bg-[#313131] h-45 rounded-lg flex flex-col justify-center box-border p-6 justify-between *:my-1.5 select-box">
-
                   <p>Output:</p>
-
 
                   {/* <input type="radio" name="output" defaultValue="structured" />
                   <span>
@@ -260,10 +297,18 @@ function Search({ onSearchSubmit }) {
                   </span> */}
 
                   <div>
-                    <input type="radio" name="output" defaultValue="structured" className="inline" />
+                    <input
+                      type="radio"
+                      name="output"
+                      defaultValue="structured"
+                      className="inline"
+                    />
                     <span className="ml-3">Structured:</span>
                     <span className="bg-[#3E3E3E] p-1 px-2 rounded-sm ml-4 cursor-pointer w-max">
-                      <select name="structured[file-type]" className="focus:outline-none">
+                      <select
+                        name="structured[file-type]"
+                        className="focus:outline-none"
+                      >
                         <option value="json">JSON</option>
                         <option value="xml">XML</option>
                         <option value="yaml">YAML</option>
@@ -287,7 +332,11 @@ function Search({ onSearchSubmit }) {
                   </span> */}
 
                   <div>
-                    <input type="radio" name="output" defaultValue="semi-structured" />
+                    <input
+                      type="radio"
+                      name="output"
+                      defaultValue="semi-structured"
+                    />
                     <span className="ml-3">Semi-Structured: Raw +</span>
                     <span className="bg-[#3E3E3E] p-1 px-2 rounded-sm ml-4 cursor-pointer w-max">
                       <select name="semi-structured[file-type]">
@@ -302,7 +351,6 @@ function Search({ onSearchSubmit }) {
                     <input type="radio" name="output" defaultValue="raw" />
                     <span className="ml-3">Raw</span>
                   </div>
-
                 </div>
 
                 {/* Crawler settings */}
@@ -333,7 +381,6 @@ function Search({ onSearchSubmit }) {
                   </div>
                 </div>
               </div>
-
               {/* End of Row 2 */}
             </div>
           ) : (
