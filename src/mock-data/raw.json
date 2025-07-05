@@ -1,0 +1,259 @@
+[
+    {
+        "id": 1,
+        "name": "https://amazon.com",
+        "raw_html": "<!DOCTYPE html><html><head><title>Amazon</title></head><body><h1>Welcome to Amazon</h1><p>Shop electronics, books, and more.</p></body></html>",
+        "relevance": 0.61,
+        "size":"2.9 MB","type":"website"
+    },
+    {
+        "id": 2,
+        "name": "https://buzzfeed.com",
+        "raw_php": "<?php\n  echo \"<h1>BuzzFeed News</h1>\";\n  echo \"<p>Breaking stories, viral quizzes, entertainment news.</p>\";\n?>",
+        "relevance":0.87,
+        "size":"5.8 MB","type":"website"
+    },
+    {
+        "id": 3,
+        "name": "https://si.edu",
+        "raw_html": "<!DOCTYPE html><html><head><title>Smithsonian Institution</title></head><body><h1>Explore the Smithsonian</h1><p>Museums, research, education and more.</p></body></html>","relevance":0.75,
+        "size":"1.5 MB","type":"website"
+    },
+    {
+        "id": 4,
+        "name": "https://barnesandnoble.com",
+        "raw_html": "<!DOCTYPE html><html><head><title>Barnes & Noble</title></head><body><h1>Books, eBooks, and more</h1><p>Discover your next great read.</p></body></html>",
+        "relevance":0.74,
+        "size":"7.2 MB","type":"website"
+    },
+    {
+        "id": 5,
+        "name": "https://tumblr.com",
+        "raw_php": "<?php\n  echo \"<h1>Share your creativity</h1>\";\n  echo \"<p>Post text, images, videos, and more.</p>\";\n?>","relevance":0.71,"size":"3.7 MB","type":"website"
+    },
+    {
+        "id": 6,
+        "name": "youtube",
+        "raw_php": "<?php\n  echo \"<h1>YouTube</h1>\";\n  echo \"<p>Watch videos and subscribe to your favorite channels.</p>\";\n?>","relevance":0.2,"size":"7.2 MB","type":"api"
+    },
+    {
+        "id": 7,
+        "name": "http://wikipedia.com",
+        "raw_html": "<!DOCTYPE html><html><head><title>Wikipedia</title></head><body><h1>Wikipedia</h1><p>The Free Encyclopedia.</p></body></html>","relevance":0.61,"size":"7.2 MB","type":"website"
+    },
+    {
+        "id": 8,
+        "name": "instagram",
+        "raw_php": "<?php\n  echo \"<h1>Instagram</h1>\";\n  echo \"<p>Share your photos and stories.</p>\";\n?>","relevance":0.54,"size":"2.9 MB","type":"api"
+    },
+    {
+        "id": 9,
+        "name": "twitter",
+        "raw_html": "<!DOCTYPE html><html><head><title>Twitter</title></head><body><h1>Twitter</h1><p>See what’s happening in the world right now.</p></body></html>","relevance":0.9,"size":"3.9 MB","type":"api"
+    },
+    {
+        "id": 10,
+        "name": "https://covid-api.com/",
+        "raw_php": "<?php\n  echo \"<h1>COVID-19 API</h1>\";\n  echo \"<p>Track the global pandemic data.</p>\";\n?>","relevance":0.53,"size":"6.3 MB","type":"api"
+    },
+    {
+        "id": 11,
+        "name": "http://marketwatch.com",
+        "raw_php": "<?php\n  echo \"<h1>MarketWatch</h1>\";\n  echo \"<p>Business news, analysis, and stock market data.</p>\";\n?>","relevance":0.38,"size":"3.9 MB","type":"website"
+    },
+    {
+        "id": 12,
+        "name": "shazam",
+        "raw_html": "<!DOCTYPE html><html><head><title>Shazam</title></head><body><h1>Shazam</h1><p>Identify any song playing around you.</p></body></html>","relevance":0.49,"size":"2.9 MB","type":"api"
+    },
+    {
+        "id": 13,
+        "name": "https://walmart.com",
+        "raw_html": "<!DOCTYPE html><html><head><title>Walmart</title></head><body><h1>Walmart</h1><p>Save money. Live better.</p></body></html>","relevance":0.44,"size":"5.8 MB","type":"website"
+    },
+    {
+        "id": 14,
+        "name": "https://allrecipes.com",
+        "raw_php": "<?php\n  echo \"<h1>AllRecipes</h1>\";\n  echo \"<p>Find and share everyday cooking inspiration.</p>\";\n?>","relevance":0.51,"size":"2.1 MB","type":"website"
+    },
+    {
+        "id": 15,
+        "name": "http://nhs.uk",
+        "raw_php": "<?php\n  echo \"<h1>NHS</h1>\";\n  echo \"<p>Health advice, services and information.</p>\";\n?>","relevance":0.7,"size":"3.9 MB","type":"website"
+    },
+    {
+        "id": 16,
+        "name": "https://archive.org",
+        "raw_html": "<!DOCTYPE html><html><head><title>Internet Archive</title></head><body><h1>Internet Archive</h1><p>Digital library of Internet sites and other cultural artifacts.</p></body></html>","relevance":0.67,"size":"3.9 MB","type":"website"
+    },
+    {
+        "id": 17,
+        "name": "https://marketstack.com/",
+        "raw_php": "<?php\n  echo \"<h1>MarketStack</h1>\";\n  echo \"<p>Real-time & historical market data API.</p>\";\n?>","relevance":0.99,"size":"4.6 MB","type":"api"
+    },
+    {
+        "id": 18,
+        "name": "https://cbc.ca",
+        "raw_html": "<!DOCTYPE html><html><head><title>CBC</title></head><body><h1>CBC</h1><p>Canadian News and Current Affairs.</p></body></html>","relevance":0.87,"size":"4.6 MB","type":"website"
+    },
+    {
+        "id": 19,
+        "name": "https://gizmodo.com",
+        "raw_php": "<?php\n  echo \"<h1>Gizmodo</h1>\";\n  echo \"<p>Tech news, reviews, and analysis.</p>\";\n?>","relevance":0.91,"size":"3.9 MB","type":"website"
+    },
+    {
+        "id": 20,
+        "name": "https://www.pbs.org/newshour/",
+        "raw_html": "<!DOCTYPE html><html><head><title>PBS NewsHour</title></head><body><h1>PBS NewsHour</h1><p>Trusted news and analysis.</p></body></html>","relevance":0.62,"size":"3.7 MB","type":"website"
+    },
+    {
+        "id": 21,
+        "name": "https://www.wordsapi.com/",
+        "raw_php": "<?php\necho \"<h1>WordsAPI</h1>\";\necho \"<p>Powerful API for English word data.</p>\";\n?>","relevance":0.9,"size":"2.9 MB","type":"api"
+    },
+    {
+        "id": 22,
+        "name": "https://www.volunteermatch.org",
+        "raw_html": "<!DOCTYPE html><html><head><title>VolunteerMatch</title></head><body><h1>VolunteerMatch</h1><p>Find a cause that lights you up.</p></body></html>","relevance":0.16,"size":"2.1 MB","type":"website"
+    },
+    {
+        "id": 23,
+        "name": "http://telegraph.co.uk",
+        "raw_php": "<?php\necho \"<h1>The Telegraph</h1>\";\necho \"<p>Latest UK and international news.</p>\";\n?>","relevance":0.09,"size":"4.6 MB","type":"website"
+    },
+    {
+        "id": 24,
+        "name": "http://domainmarket.com",
+        "raw_html": "<!DOCTYPE html><html><head><title>Domain Market</title></head><body><h1>Domain Market</h1><p>Buy premium domain names.</p></body></html>","relevance":0.74,"size":"3.9 MB","type":"website"
+    },
+    {
+        "id": 25,
+        "name": "TMDB",
+        "raw_php": "<?php\necho \"<h1>TMDB</h1>\";\necho \"<p>The Movie Database API.</p>\";\n?>","relevance":0.56,"size":"2.9 MB","type":"api"
+    },
+    {
+        "id": 26,
+        "name": "https://paginegialle.it",
+        "raw_html": "<!DOCTYPE html><html><head><title>PagineGialle</title></head><body><h1>PagineGialle</h1><p>Italian business directory.</p></body></html>","relevance":0.94,"size":"3.7 MB","type":"website"
+    },
+    {
+        "id": 27,
+        "name": "unsplash",
+        "raw_html": "<!DOCTYPE html><html><head><title>Unsplash</title></head><body><h1>Unsplash</h1><p>Beautiful free images and photos.</p></body></html>","relevance":0.56,"size":"4.6 MB","type":"api"
+    },
+    {
+        "id": 28,
+        "name": "OpenSky",
+        "raw_php": "<?php\necho \"<h1>OpenSky</h1>\";\necho \"<p>Real-time air traffic data.</p>\";\n?>","relevance":0.01,"size":"1.5 MB","type":"api"
+    },
+    {
+        "id": 29,
+        "name": "trello",
+        "raw_html": "<!DOCTYPE html><html><head><title>Trello</title></head><body><h1>Trello</h1><p>Organize anything with anyone.</p></body></html>","relevance":0.42,"size":"1.5 MB","type":"api"
+    },
+    {
+        "id": 30,
+        "name": "crunchbase",
+        "raw_php": "<?php\necho \"<h1>Crunchbase</h1>\";\necho \"<p>Discover innovative companies and people.</p>\";\n?>","relevance":0.4,"size":"3.9 MB","type":"api"
+    },
+    {
+        "id": 31,
+        "name": "http://ask.com",
+        "raw_php": "<?php\necho \"<h1>Ask.com</h1>\";\necho \"<p>Search engine for questions and answers.</p>\";\n?>","relevance":0.36,"size":"5.8 MB","type":"website"
+    },
+    {
+        "id": 32,
+        "name": "https://nps.gov",
+        "raw_html": "<!DOCTYPE html><html><head><title>National Park Service</title></head><body><h1>National Park Service</h1><p>Explore the great outdoors.</p></body></html>","relevance":0.4,"size":"3.7 MB","type":"website"
+    },
+    {
+        "id": 33,
+        "name": "https://berkeley.edu",
+        "raw_php": "<?php\necho \"<h1>UC Berkeley</h1>\";\necho \"<p>University of California, Berkeley.</p>\";\n?>","relevance":0.88,"size":"1.5 MB","type":"website"
+    },
+    {
+        "id": 34,
+        "name": "OpenWeather",
+        "raw_html": "<!DOCTYPE html><html><head><title>OpenWeather</title></head><body><h1>OpenWeather</h1><p>Weather data for any location.</p></body></html>","relevance":0.61,"size":"5.8 MB","type":"api"
+    },
+    {
+        "id": 35,
+        "name": "github",
+        "raw_php": "<?php\necho \"<h1>GitHub</h1>\";\necho \"<p>Code hosting platform for version control.</p>\";\n?>","relevance":0.94,"size":"1.5 MB","type":"api"
+    },
+    {
+        "id": 36,
+        "name": "Google Maps",
+        "raw_php": "<?php\necho \"<h1>Google Maps</h1>\";\necho \"<p>Navigate the world around you.</p>\";\n?>","relevance":0.39,"size":"5.8 MB","type":"api"
+    },
+    {
+        "id": 37,
+        "name": "http://techcrunch.com",
+        "raw_html": "<!DOCTYPE html><html><head><title>TechCrunch</title></head><body><h1>TechCrunch</h1><p>Startup and technology news.</p></body></html>","relevance":0.31,"size":"7.2 MB","type":"website"
+    },
+    {
+        "id": 38,
+        "name": "http://163.com",
+        "raw_html": "<!DOCTYPE html><html><head><title>163.com</title></head><body><h1>163.com</h1><p>Popular Chinese web portal.</p></body></html>","relevance":0.8,"size":"2.9 MB","type":"website"
+    },
+    {
+        "id": 39,
+        "name": "spotify",
+        "raw_php": "<?php\necho \"<h1>Spotify</h1>\";\necho \"<p>Music for everyone.</p>\";\n?>","relevance":0.91,"size":"3.9 MB","type":"api"
+    },
+    {
+        "id": 40,
+        "name": "https://tamu.edu",
+        "raw_php": "<?php\necho \"<h1>Texas A&M</h1>\";\necho \"<p>Home of the Aggies.</p>\";\n?>","relevance":0.84,"size":"6.3 MB","type":"website"
+    },
+    {
+        "id": 41,
+        "name": "https://pokeapi.co/",
+        "raw_html": "<!DOCTYPE html><html><head><title>PokeAPI</title></head><body><h1>PokeAPI</h1><p>All the Pokémon data you'll ever need.</p></body></html>","relevance":0.03,"size":"2.1 MB","type":"api"
+    },
+    {
+        "id": 42,
+        "name": "reddit",
+        "raw_php": "<?php\necho \"<h1>Reddit</h1>\";\necho \"<p>Dive into anything.</p>\";\n?>","relevance":0.61,"size":"2.9 MB","type":"api"
+    },
+    {
+        "id": 43,
+        "name": "http://webmd.com",
+        "raw_html": "<!DOCTYPE html><html><head><title>WebMD</title></head><body><h1>WebMD</h1><p>Better information. Better health.</p></body></html>","relevance":0.55,"size":"3.7 MB","type":"website"
+    },
+    {
+        "id": 44,
+        "name": "zillow",
+        "raw_html": "<!DOCTYPE html><html><head><title>Zillow</title></head><body><h1>Zillow</h1><p>Real estate, rentals, and mortgages.</p></body></html>","relevance":0.36,"size":"3.7 MB","type":"api"
+    },
+    {
+        "id": 45,
+        "name": "https://www.kingarthurbaking.com/recipes",
+        "raw_php": "<?php\necho \"<h1>King Arthur Baking</h1>\";\necho \"<p>Trusted baking recipes.</p>\";\n?>","relevance":0.85,"size":"7.2 MB","type":"website"
+    },
+    {
+        "id": 46,
+        "name": "http://nytimes.com",
+        "raw_html": "<!DOCTYPE html><html><head><title>The New York Times</title></head><body><h1>The New York Times</h1><p>Independent journalism since 1851.</p></body></html>","relevance":0.39,"size":"1.5 MB","type":"website"
+    },
+    {
+        "id": 47,
+        "name": "yummly",
+        "raw_html": "<!DOCTYPE html><html><head><title>Yummly</title></head><body><h1>Yummly</h1><p>Smart cooking app and recipe discovery.</p></body></html>","relevance":0.6,"size":"7.2 MB","type":"api"
+    },
+    {
+        "id": 48,
+        "name": "https://www.bonappetit.com/",
+        "raw_html": "<!DOCTYPE html><html><head><title>Bon Appétit</title></head><body><h1>Bon Appétit</h1><p>Delicious recipes and food news.</p></body></html>","relevance":0.43,"size":"2.1 MB","type":"website"
+    },
+    {
+        "id": 49,
+        "name": "https://www.federalreserve.gov/",
+        "raw_html": "<!DOCTYPE html><html><head><title>Federal Reserve</title></head><body><h1>Federal Reserve</h1><p>U.S. central banking system.</p></body></html>","relevance":0.97,"size":"1.5 MB","type":"website"
+    },
+    {
+        "id": 50,
+        "name": "https://example.com",
+        "raw_php": "<?php\necho \"<h1>Example Domain</h1>\";\necho \"<p>Example site for documentation and testing.</p>\";\n?>","relevance":0.06,"size":"5.8 MB","type":"website"
+    }
+]
