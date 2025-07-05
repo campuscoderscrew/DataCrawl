@@ -6,3 +6,37 @@ input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+input[type="radio"] {
+    accent-color: #2C2C2C;
+}
+
+input[type="checkbox"] {
+    accent-color: #2C2C2C;
+    border: none;
+    outline: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(40%) sepia(10%) saturate(0%) hue-rotate(180deg);
+    cursor: pointer;
+}
+
+input[type="checkbox"]:focus {
+    outline: none;
+}
+
+select {
+    border: none;
+}
+
+select option {
+    background-color: #2C2C2C;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+option:focus {
+    background-color: #2A2A2A;
+}

@@ -156,7 +156,7 @@ function Search({ onSearchSubmit }) {
               validateApiData(new FormData(e.target));
             }}
             className="flex flex-col justify-center bg-[#242424] p-8 mr-3 rounded-lg w-85">
-            <div className="mb-6">
+            <div className="mb-10">
               <p className="font-bold mb-4">Providers</p>
               <div className="grid grid-cols-2 mb-6">
                 <div className="grid gap-2">
@@ -180,7 +180,7 @@ function Search({ onSearchSubmit }) {
                   </label>
                 </div>
               </div>
-              <button type="button" className="p-1 px-8 bg-[#2C2C2C] rounded-sm">Provider Login</button>
+              <button type="button" className="p-1 px-8 bg-[#2C2C2C] rounded-sm hover:cursor-pointer hover:bg-[#2f2f2f]">Provider Login</button>
             </div>
 
             <div className="">
@@ -189,7 +189,7 @@ function Search({ onSearchSubmit }) {
 
                 <label className="flex justify-between">
                   <span>Author</span>
-                  <input type="text" name="author" className="bg-[#2C2C2C] p-1 px-2 rounded-sm" />
+                  <input type="text" name="author" className="bg-[#2C2C2C] p-1 px-2 rounded-sm focus:outline-none" />
                 </label>
 
                 <label className="flex justify-between">
@@ -274,9 +274,9 @@ function Search({ onSearchSubmit }) {
               }}
               className="flex flex-col justify-center items-center"
             >
-              {/* Search Bar */}
-              <div className="search-bar w-max flex flex-row justify-between items-stretch box-border mb-5">
-                <div className="flex flex-row bg-[#2A2A2A] pl-2 rounded-lg  w-[80%]">
+              {/* Search Bar items-stretch box-border */}
+              <div className="search-bar w-full flex flex-row justify-between mb-5">
+                <div className="flex flex-row bg-[#2A2A2A] pl-2 rounded-lg w-[80%]">
                   <Select
                     name="search-engine"
                     className="mr-5 flex flex-col justify-center items-center"
@@ -308,7 +308,7 @@ function Search({ onSearchSubmit }) {
               {/* settings grid */}
 
               {!loading ? (
-                <div className="grid h-80 w-155 grid-cols-[58%_38%] gap-[2%]">
+                <div className="grid h-80 w-155 grid-cols-[58%_40%] gap-[2%]">
 
                   {/* Col 1 */}
                   <div className="grid grid-rows-[40%_56%] h-full box-border gap-y-[4%] w-full">
@@ -320,7 +320,7 @@ function Search({ onSearchSubmit }) {
                         <label>
                           Links Generated
                           <input
-                            className="rounded-sm bg-[#2A2A2A] w-[3rem] py-2 outline-none focus:ring-0 focus:border-none text-center ml-5"
+                            className="rounded-sm bg-[#2A2A2A] w-[3rem] py-2 outline-none focus:ring-0 focus:border-none text-center ml-8"
                             type="number"
                             defaultValue="5"
                             name="num-links"
