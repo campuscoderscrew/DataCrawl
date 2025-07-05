@@ -8,6 +8,7 @@ function Search({ onSearchSubmit }) {
   // form options for error checking + handling output
   const [options, setOptions] = React.useState([]);
   const [errors, setErrors] = React.useState([]);
+  const [limitPerType, setLimitPerType] = React.useState(10);
 
   // form option for loading screen state
   const [loading, setLoading] = React.useState(false);
@@ -92,6 +93,7 @@ function Search({ onSearchSubmit }) {
     // if (!data["data-option"]) errs.push("No data search option selected");
     if (data["links-crawled"] < 0 || data["num-links"] < 0 || data["depth"] < 0)
       errs.push("Negative values cannot be selected");
+
     if (!data["links-crawled"]) {
       errs.push("Links Crawled needs to be filled out");
     }
@@ -100,6 +102,12 @@ function Search({ onSearchSubmit }) {
     }
     if (!data["num-links"]) {
       errs.push("Links Generated needs to be filled out");
+    }
+    if (!limitPerType) {
+      errs.push("Limit Per Type needs to be filled out");
+    }
+    if (limitPerType < 0) {
+      errs.push("Limit Per Type cannot be negative");
     }
     setErrors(errs);
 
@@ -122,8 +130,7 @@ function Search({ onSearchSubmit }) {
         fileType = data["structured[file-type]"];
       } else if (data.output === "semi-structured") {
         fileType = data["semi-structured[file-type]"];
-      }
-      else {
+      } else {
         fileType = data.output;
       }
       data["file-type"] = fileType;
@@ -136,7 +143,7 @@ function Search({ onSearchSubmit }) {
   }
 
   function validateApiData(formData) {
-    //Separate validation for Oauth-API Form 
+    //Separate validation for Oauth-API Form
   }
 
   const cancelLoading = () => {
@@ -147,7 +154,6 @@ function Search({ onSearchSubmit }) {
     <>
       <Navbar />
       <main className="relative bg bg-[url('../grid-background-darker.svg')] text-[#D4D4D4] h-screen w-screen p-4 box-border flex flex-col justify-center items-center">
-
         <div className="flex relative mt-15">
           <form
             id="oauth-settings"
@@ -171,7 +177,11 @@ function Search({ onSearchSubmit }) {
                 </div>
                 <div className="grid gap-2">
                   <label>
-                    <input type="checkbox" value="hugging-face" name="provider" />
+                    <input
+                      type="checkbox"
+                      value="hugging-face"
+                      name="provider"
+                    />
                     <span className="ml-2">Hugging Face</span>
                   </label>
                   <label>
@@ -186,29 +196,39 @@ function Search({ onSearchSubmit }) {
             <div className="">
               <p className="font-bold mb-4">Search Parameters</p>
               <div className="flex flex-col *:mb-4">
-
                 <label className="flex justify-between">
                   <span>Author</span>
                   <input type="text" name="author" className="bg-[#2C2C2C] p-1 px-2 rounded-sm focus:outline-none" />
+
                 </label>
 
                 <label className="flex justify-between">
                   <span className="">Date</span>
                   <div className="text-right">
-                    <input type="date" name="start-date" className="bg-[#2C2C2C] rounded-sm w-[35%] p-1 text-[#7f7d7d]" />
+                    <input
+                      type="date"
+                      name="start-date"
+                      className="bg-[#2C2C2C] rounded-sm w-[35%] p-1 text-[#7f7d7d]"
+                    />
                     <span className="px-2"> - </span>
-                    <input type="date" name="start-date" className="bg-[#2C2C2C] rounded-sm w-[35%] p-1 text-[#7f7d7d]" />
+                    <input
+                      type="date"
+                      name="start-date"
+                      className="bg-[#2C2C2C] rounded-sm w-[35%] p-1 text-[#7f7d7d]"
+                    />
                   </div>
                 </label>
 
                 <div className="flex w-full flex-row justify-between items-center mb-6">
-                  <label for="links-crawled">Limit Per Type</label>
+                  <label for="limit-per-type">Limit Per Type</label>
                   <input
                     className="rounded-sm bg-[#2C2C2C] w-[3rem] py-2 outline-none focus:ring-0 focus:border-none text-center ml-5"
                     type="number"
                     defaultValue="10"
-                    name="links-crawled"
-                    id="links-crawled"
+                    name="limit-per-type"
+                    id="limit-per-type"
+                    onChange={(e) => setLimitPerType(e.target.value)}
+                    value={limitPerType}
                   />
                 </div>
 
@@ -239,22 +259,28 @@ function Search({ onSearchSubmit }) {
                         <span className="ml-2">Code</span>
                       </label>
                       <label>
-                        <input type="checkbox" value="geospatial" name="provider" />
+                        <input
+                          type="checkbox"
+                          value="geospatial"
+                          name="provider"
+                        />
                         <span className="ml-2">GeoSpatial</span>
                       </label>
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
-
-          </form >
+          </form>
 
           <div>
             {/* Header */}
             <div className="header flex flex-row justify-center items-center mb-10 mt-15">
-              <img src="../Logo.svg" alt="datacrawl-logo" className="w-20 mr-10" />
+              <img
+                src="../Logo.svg"
+                alt="datacrawl-logo"
+                className="w-20 mr-10"
+              />
               <div className="header-text">
                 <h1 className="text-5xl font-semibold mb-4 text-[#939395] ">
                   DataCrawl
@@ -264,7 +290,6 @@ function Search({ onSearchSubmit }) {
                 </p>
               </div>
             </div>
-
 
             <form
               id="settings"
@@ -299,8 +324,10 @@ function Search({ onSearchSubmit }) {
                     className="focus:outline-none w-100"
                   />
                 </div>
-                <button className="bg-[#242424] py-3 px-6 rounded-lg hover:cursor-pointer hover:bg-[#2C2C2C]"
-                  disabled={loading}>
+                <button
+                  className="bg-[#242424] py-3 px-6 rounded-lg hover:cursor-pointer hover:bg-[#2C2C2C]"
+                  disabled={loading}
+                >
                   Generate
                 </button>
               </div>
@@ -312,7 +339,6 @@ function Search({ onSearchSubmit }) {
 
                   {/* Col 1 */}
                   <div className="grid grid-rows-[40%_56%] h-full box-border gap-y-[4%] w-full">
-
                     {/* Search Engine bg-[#242424]*/}
                     <div className="bg-[#242424] h-full rounded-lg flex flex-col justify-center p-6 box-border select-box">
                       <div>
@@ -332,14 +358,21 @@ function Search({ onSearchSubmit }) {
                     {/* Output bg-[#242424] */}
 
                     <div className="bg-[#242424] rounded-lg flex flex-col justify-center box-border p-6 *:my-1.5 select-box h-full">
-
                       <p className="font-bold">Output:</p>
 
                       <div>
-                        <input type="radio" name="output" defaultValue="structured" className="inline" />
+                        <input
+                          type="radio"
+                          name="output"
+                          defaultValue="structured"
+                          className="inline"
+                        />
                         <span className="ml-3">Structured:</span>
                         <span className="bg-[#2C2C2C] p-1 px-2 rounded-sm ml-4 cursor-pointer w-max">
-                          <select name="structured[file-type]" className="focus:outline-none">
+                          <select
+                            name="structured[file-type]"
+                            className="focus:outline-none"
+                          >
                             <option value="json">JSON</option>
                             <option value="xml">XML</option>
                             <option value="yaml">YAML</option>
@@ -348,7 +381,11 @@ function Search({ onSearchSubmit }) {
                       </div>
 
                       <div>
-                        <input type="radio" name="output" defaultValue="semi-structured" />
+                        <input
+                          type="radio"
+                          name="output"
+                          defaultValue="semi-structured"
+                        />
                         <span className="ml-3">Semi-Structured: Raw +</span>
                         <span className="bg-[#2C2C2C] p-1 px-2 rounded-sm ml-4 cursor-pointer w-max">
                           <select name="semi-structured[file-type]">
@@ -363,15 +400,11 @@ function Search({ onSearchSubmit }) {
                         <input type="radio" name="output" defaultValue="raw" />
                         <span className="ml-3">Raw</span>
                       </div>
-
                     </div>
-
                   </div>{" "}
                   {/* End of Col 1 */}
-
                   {/* Col 2 */}
                   <div className="grid h-full">
-
                     {/* Crawler settings */}
                     <div className="bg-[#242424] rounded-lg flex flex-col justify-center p-6 box-border select-box">
                       <div>
@@ -400,7 +433,10 @@ function Search({ onSearchSubmit }) {
                         <div className="flex w-full flex-row justify-between items-center mb-6">
                           <span>Type:</span>
                           <span className="bg-[#2C2C2C] p-1 px-2 rounded-sm ml-4 cursor-pointer w-max">
-                            <select name="structured[file-type]" className="focus:outline-none">
+                            <select
+                              name="structured[file-type]"
+                              className="focus:outline-none"
+                            >
                               <option value="recursive">Recursive</option>
                               <option value="breadth">Breadth</option>
                               <option value="depth">Depth</option>
@@ -410,15 +446,17 @@ function Search({ onSearchSubmit }) {
 
                         <div>
                           <label className="hover:cursor-pointer">
-                            <input type="checkbox" name="backlink" value="backlink" />
+                            <input
+                              type="checkbox"
+                              name="backlink"
+                              value="backlink"
+                            />
                             <span className="ml-5">Use Backlink</span>
                           </label>
                         </div>
-
                       </div>
                     </div>
                   </div>
-
                   {/* End of Col 2 */}
                 </div>
               ) : (
@@ -427,9 +465,8 @@ function Search({ onSearchSubmit }) {
             </form>
           </div>
           <SearchMessageErrors errors={errors} onClose={() => setErrors([])} />
-
-        </div >
-      </main >
+        </div>
+      </main>
     </>
   );
 }
