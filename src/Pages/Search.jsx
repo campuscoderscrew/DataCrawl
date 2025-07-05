@@ -123,6 +123,9 @@ function Search({ onSearchSubmit }) {
       } else if (data.output === "semi-structured") {
         fileType = data["semi-structured[file-type]"];
       }
+      else {
+        fileType = data.output;
+      }
       data["file-type"] = fileType;
       delete data["structured[file-type]"];
       delete data["semi-structured[file-type]"];

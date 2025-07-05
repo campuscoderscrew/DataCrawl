@@ -16,6 +16,7 @@ import Navbar from "../Components/Navbar"
 import jsonData from '../mock-data/mock-data.json';
 import yamlData from '../mock-data/mock-data.yaml?raw';
 import xmlData from '../mock-data/mock-data.xml?raw';
+import rawData from '../mock-data/raw.json'
 
 const Results = (props) => {
 
@@ -47,6 +48,8 @@ const Results = (props) => {
   // Data loading effect
   useEffect(() => {
     const loadData = async () => {
+
+      // Parse and store data
       try {
         let parsedData = [];
 
@@ -77,10 +80,16 @@ const Results = (props) => {
             parsedData = Array.isArray(jsonData) ? jsonData : [];
             break;
 
+          case 'raw':
+            parsedData = Array.isArray(rawData) ? rawData : [];
+            break;
+
+
           default:
             console.warn(`Unsupported source type: ${sourceType}`);
             parsedData = [];
         }
+
 
         let updatedParsedData = parsedData;
         if (INITIAL_DATA_SOURCE !== 'all') {
@@ -257,6 +266,7 @@ const Results = (props) => {
       <Navbar />
       {/* Sidebar */}
       <aside className="py-22 w-64 bg-[#313131] shadow-lg p-6" style={{ paddingRight: '20px' }}>
+
         {/* Logo */}
         <header className="mb-6">
           <div className="bg-[#676464] rounded-lg px-4 py-2 text-center">
@@ -278,6 +288,7 @@ const Results = (props) => {
             <option value="yaml">YAML</option>
             <option value="xml">XML</option>
             <option value="json">JSON</option>
+            <option value="raw">Raw</option>
           </select>
         </section>
 
