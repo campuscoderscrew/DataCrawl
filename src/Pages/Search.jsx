@@ -89,7 +89,7 @@ function Search({ onSearchSubmit }) {
       errs.push("Search Query is invalid");
     }
     if (!data.output) errs.push("No output option selected");
-    if (!data["data-option"]) errs.push("No data search option selected");
+    // if (!data["data-option"]) errs.push("No data search option selected");
     if (data["links-crawled"] < 0 || data["num-links"] < 0 || data["depth"] < 0)
       errs.push("Negative values cannot be selected");
     if (!data["links-crawled"]) {
