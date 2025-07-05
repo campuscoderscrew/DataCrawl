@@ -14,13 +14,16 @@ export default function Login({ setNewUser }) {
     event.preventDefault();
     //handle form here
     const form = event.target;
-    setEmail(form.email.value.trim());
-    setPassword(form.password.value.trim());
+    const email = form.email.value.trim();
+    const password = form.password.value.trim();
 
     if (!email || !password) {
       setError("Please fill in both password and email fields.");
       return;
     }
+    setError("");
+    setEmail(email);
+    setPassword(password);
 
     navigate("/search");
   };
