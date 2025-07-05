@@ -2,8 +2,7 @@ import React from "react";
 import Select from "react-select";
 import SearchMessageErrors from "../Components/SearchMessageErrors";
 import LoadingScreen from "../Components/LoadingScreen";
-import Navbar from "../Components/Navbar"
-
+import Navbar from "../Components/Navbar";
 
 function Search({ onSearchSubmit }) {
   // form options for error checking + handling output
@@ -93,7 +92,15 @@ function Search({ onSearchSubmit }) {
     if (!data["data-option"]) errs.push("No data search option selected");
     if (data["links-crawled"] < 0 || data["num-links"] < 0 || data["depth"] < 0)
       errs.push("Negative values cannot be selected");
-
+    if (!data["links-crawled"]) {
+      errs.push("Links Crawled needs to be filled out");
+    }
+    if (!data["depth"]) {
+      errs.push("Depth needs to be filled out");
+    }
+    if (!data["num-links"]) {
+      errs.push("Links Generated needs to be filled out");
+    }
     setErrors(errs);
 
     if (!data.output) console.log(data);
@@ -125,9 +132,7 @@ function Search({ onSearchSubmit }) {
 
       // pass data to App.jsx
       onSearchSubmit(data);
-
     }
-
   }
 
   function validateApiData(formData) {
@@ -411,7 +416,6 @@ function Search({ onSearchSubmit }) {
                         </div>
 
                       </div>
-
                     </div>
                   </div>
 

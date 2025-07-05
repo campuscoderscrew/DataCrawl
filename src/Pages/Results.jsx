@@ -29,6 +29,7 @@ const Results = (props) => {
     THIRTY_DAYS: '30days',
     CUSTOM: 'custom'
   };
+
   const INITIAL_DATA_SOURCE = SEARCH_CRITERIA["data-option"];
 
   // State management
@@ -55,7 +56,7 @@ const Results = (props) => {
         switch (sourceType) {
           case 'yaml':
             const parsedYaml = yaml.load(yamlData);
-            parsedData = Array.isArray(parsedYaml?.items) ? parsedYaml.items : [];
+            parsedData = Array.isArray(parsedYaml?.items) ? parsedYaml.items : [];   
             break;
 
           case 'xml':
@@ -98,6 +99,8 @@ const Results = (props) => {
         let slicedData = updatedParsedData.slice(0, MAX_TOTAL_ITEMS);
 
         setData(slicedData);
+        console.log("Setting data:", slicedData);
+
         setCurrentPage(1);
       } catch (error) {
         console.error(`Error loading ${sourceType.toUpperCase()} data:`, error);
@@ -154,11 +157,11 @@ const Results = (props) => {
   const getSourceIcon = (type) => {
     switch (type) {
       case 'api':
-        return <Database className="w-4 h-4 text-blue-600" />;
+        return <Database className="w-4 h-4 text-gray-500" />;
       case 'website':
-        return <Globe className="w-4 h-4 text-green-600" />;
+        return <Globe className="w-4 h-4 text-gray-500" />;
       default:
-        return <Layers className="w-4 h-4 text-purple-600" />;
+        return <Layers className="w-4 h-4 text-gray-500" />;
     }
   };
 
@@ -180,10 +183,10 @@ const Results = (props) => {
 
       switch (sortBy) {
         case 'relevance':
-          comparison = b.relevance - a.relevance;
+          comparison = a.relevance - b.relevance;
           break;
         case 'name':
-          comparison = a.name.localeCompare(b.name);
+          comparison = b.name.localeCompare(a.name); // a->z DESCENDING, z->a ASCENDING
           break;
         case 'size':
           comparison = parseFloat(a.size || '0') - parseFloat(b.size || '0');
@@ -259,27 +262,28 @@ const Results = (props) => {
 
   return (
 
-    <div className="min-h-screen bg-gray-100 flex " style={{ paddingTop: '20px' }}>
-      {/* <Navbar /> */}
+    <div className="min-h-screen bg-[#252525] flex " style={{ paddingTop: '20px' }}>
+      <Navbar />
       {/* Sidebar */}
-      <aside className="py-6 w-64 bg-white shadow-lg p-6" style={{ paddingRight: '20px' }}>
+      <aside className="py-22 w-64 bg-[#313131] shadow-lg p-6" style={{ paddingRight: '20px' }}>
+
         {/* Logo */}
         <header className="mb-6">
-          <div className="bg-gray-400 rounded-lg px-4 py-2 text-center">
+          <div className="bg-[#676464] rounded-lg px-4 py-2 text-center">
             <span className="text-white font-semibold text-lg">WebCrawler</span>
           </div>
         </header>
 
         {/* Data Source File Type Selection */}
         <section className="mb-6">
-          <label className="block font-medium text-gray-700 mb-2" htmlFor="sourceTypeSelect">
+          <label className="block font-medium text-white mb-2" htmlFor="sourceTypeSelect">
             Select Data Source File
           </label>
           <select
             id="sourceTypeSelect"
             value={sourceType}
             onChange={(e) => handleSourceTypeChange(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full border border-white rounded-md px-3 py-2 bg-[#313131] text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
           >
             <option value="yaml">YAML</option>
             <option value="xml">XML</option>
@@ -290,7 +294,7 @@ const Results = (props) => {
 
         {/* Data Source Filter */}
         <section className="mb-6">
-          <h3 className="font-medium text-gray-700 mb-3">Data Source</h3>
+          <h3 className="font-medium text-white mb-3">Data Source</h3>
           <div className="space-y-2">
             {[
               { value: 'all', label: 'Show All' },
@@ -301,8 +305,8 @@ const Results = (props) => {
                 key={value}
                 onClick={() => handleFilterChange('dataSource', value)}
                 className={`w-full px-4 py-2 rounded-md text-left text-sm font-medium transition-all duration-200 ${filters.dataSource === value
-                  ? 'bg-blue-100 text-blue-800 border-2 border-blue-300 shadow-md'
-                  : 'bg-gray-50 text-gray-700 border border-gray-200 hover:bg-gray-100 hover:shadow-sm'
+                  ? 'bg-[#3a3a3a] text-white border-2 border-[#3a3a3a] shadow-md'
+                  : 'bg-[#2a2a2a] text-gray-300 border border-[#3a3a3a] hover:text-white hover:shadow-sm'
                   }`}
               >
                 {label}
@@ -313,7 +317,7 @@ const Results = (props) => {
 
         {/* Date Range Filter */}
         <section>
-          <h3 className="font-medium text-gray-700 mb-3 flex items-center space-x-2">
+          <h3 className="font-medium text-white mb-3 flex items-center space-x-2">
             <Calendar className="w-4 h-4" />
             <span>Date Range</span>
           </h3>
@@ -330,9 +334,9 @@ const Results = (props) => {
                   value={value}
                   checked={filters.dateRange === value}
                   onChange={(e) => handleFilterChange('dateRange', e.target.value)}
-                  className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                  className="w-4 h-4 text-white border-Neutral-50 focus:ring-gray-500"
                 />
-                <span className="text-gray-700">{label}</span>
+                <span className="text-white">{label}</span>
               </label>
             ))}
           </div>
@@ -348,7 +352,7 @@ const Results = (props) => {
                   type="date"
                   value={filters.startDate}
                   onChange={(e) => handleFilterChange('startDate', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                 />
               </div>
               <div>
@@ -359,12 +363,12 @@ const Results = (props) => {
                   type="date"
                   value={filters.endDate}
                   onChange={(e) => handleFilterChange('endDate', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                 />
               </div>
               <button
                 onClick={applyCustomDateFilter}
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-200 text-sm font-medium"
+                className="w-full bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition-colors duration-200 text-sm font-medium"
               >
                 Apply Custom Range
               </button>
@@ -374,13 +378,44 @@ const Results = (props) => {
       </aside>
 
       {/* Main Content */}
-      <main className="py-22 flex-1 p-8 bg-gray-50">
+      <main className="py-22 flex-1 p-8 bg-[#252525]">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
 
+        {/* Search Bar */}
+        <div
+          className="search-bar px-2 py-2 mb-5 rounded-full flex flex-row items-center"
+          style={{
+            backgroundColor: 'white'
+          }}
+        >
+          <div
+            className="flex items-center justify-center h-10 w-10 bg-gray-200 rounded-full"
+          >
+            <img
+              src="https://cdn.pixabay.com/photo/2017/01/13/01/22/magnifying-glass-1976105_1280.png"
+              alt="magnifying glass :D"
+              style={{ width: '20px', height: '20px' }}
+            />
+          </div>
+          <div className="flex flex-row flex-1">
+            <input
+              type="text"
+              name="search"
+              placeholder="filter results..."
+              className="focus:outline-none w-full"
+              style={{ paddingLeft: '20px' }}
+            />
+          </div>
+          <button className="ml-4 bg-[#313131] py-2 px-6 rounded-full hover:cursor-pointer hover:bg-[#2C2C2C] text-white font-semibold transition">
+            Sort
+          </button>
+        </div>
+
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           {/* Header AND Sorting Controls */}
           <header className="px-6 py-4 border-b border-gray-200 bg-white">
             <div className="flex justify-between items-center">
-              <h1 className="text-xl font-bold text-gray-900">Search Results</h1>
+              <h1 className="text-xl font-bold text-[#252525]">Search Results</h1>
 
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-2">
@@ -388,7 +423,7 @@ const Results = (props) => {
                   <select
                     value={sortBy}
                     onChange={(e) => handleSortChange(e.target.value, sortOrder)}
-                    className="text-sm border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="text-sm border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                   >
                     <option value="relevance">Relevance</option>
                     <option value="name">Name</option>
@@ -401,7 +436,7 @@ const Results = (props) => {
                   <select
                     value={sortOrder}
                     onChange={(e) => handleSortChange(sortBy, e.target.value)}
-                    className="text-sm border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="text-sm border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                   >
                     <option value="desc">Descending</option>
                     <option value="asc">Ascending</option>
@@ -437,7 +472,7 @@ const Results = (props) => {
 
           {/* Results Table Body */}
           <div className="divide-y divide-gray-200">
-            {paginatedData.length === 0 ? (
+            { paginatedData.length === 0 ? (
               <div className="p-8 text-center">
                 <p className="text-gray-500 text-lg">No results found</p>
                 <p className="text-gray-400 text-sm mt-1">
@@ -486,7 +521,7 @@ const Results = (props) => {
                   <div className="col-span-2 flex space-x-2">
                     <button
                       onClick={() => handleViewItem(item.viewUrl)}
-                      className="inline-flex items-center px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-md hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+                      className="inline-flex items-center px-3 py-1 bg-gray-600 text-white text-xs font-medium rounded-md hover:bg-gray-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1"
                       disabled={!item.viewUrl}
                     >
                       <Eye className="w-3 h-3 mr-1" />
@@ -494,7 +529,7 @@ const Results = (props) => {
                     </button>
                     <button
                       onClick={() => handleDownloadItem(item.downloadUrl)}
-                      className="inline-flex items-center px-3 py-1 bg-green-600 text-white text-xs font-medium rounded-md hover:bg-green-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-1"
+                      className="inline-flex items-center px-3 py-1 bg-gray-600 text-white text-xs font-medium rounded-md hover:bg-gray-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1"
                       disabled={!item.downloadUrl}
                     >
                       <Download className="w-3 h-3 mr-1" />
@@ -519,7 +554,7 @@ const Results = (props) => {
                   <button
                     onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 1}
-                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                   >
                     Previous
                   </button>
@@ -531,7 +566,7 @@ const Results = (props) => {
                   <button
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}
-                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                   >
                     Next
                   </button>
@@ -539,6 +574,7 @@ const Results = (props) => {
               </div>
             </footer>
           )}
+        </div>
         </div>
       </main>
     </div>
