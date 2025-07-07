@@ -434,7 +434,7 @@ function Search({ onSearchSubmit }) {
                           <span>Type:</span>
                           <span className="bg-[#2C2C2C] p-1 px-2 rounded-sm ml-4 cursor-pointer w-max">
                             <select
-                              name="structured[file-type]"
+                              name="crawler-type"
                               className="focus:outline-none"
                             >
                               <option value="recursive">Recursive</option>
