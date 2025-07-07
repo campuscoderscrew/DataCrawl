@@ -30,13 +30,11 @@ const Results = (props) => {
     CUSTOM: 'custom'
   };
 
-  const INITIAL_DATA_SOURCE = SEARCH_CRITERIA["data-option"];
-
   // State management
   const [data, setData] = useState([]);
   const [sourceType, setSourceType] = useState(SEARCH_CRITERIA["file-type"]);
   const [filters, setFilters] = useState({
-    dataSource: INITIAL_DATA_SOURCE,
+    dataSource: "all",
     dateRange: '7days',
     startDate: '',
     endDate: '',
@@ -90,13 +88,7 @@ const Results = (props) => {
             parsedData = [];
         }
 
-
-        let updatedParsedData = parsedData;
-        if (INITIAL_DATA_SOURCE !== 'all') {
-          updatedParsedData = parsedData.filter(item => item.type === INITIAL_DATA_SOURCE);
-        }
-
-        let slicedData = updatedParsedData.slice(0, MAX_TOTAL_ITEMS);
+        let slicedData = parsedData.slice(0, MAX_TOTAL_ITEMS);
 
         setData(slicedData);
         console.log("Setting data:", slicedData);
