@@ -155,7 +155,8 @@ function Search({ onSearchSubmit }) {
       <Navbar />
       <main className="relative bg bg-[url('../grid-background-darker.svg')] text-[#D4D4D4] h-screen w-screen p-4 box-border flex flex-col justify-center items-center">
         <div className="flex relative mt-15">
-          <form
+          {!loading && (
+            <form
             id="oauth-settings"
             onSubmit={(e) => {
               e.preventDefault();
@@ -272,6 +273,7 @@ function Search({ onSearchSubmit }) {
               </div>
             </div>
           </form>
+          )}
 
           <div>
             {/* Header */}
