@@ -9,12 +9,12 @@ Components related to this page are in Components/Landing
 
 export default function Landing() {
     return (
-        <div>
+        <div className="bg-[#111111] h-screen w-screen overflow-x-hidden">
             {/* Hero */}
-            <main>
+            <main className="w-full aspect-[1.5] bg-gradient-radial at-[60%_50%] from-[#111111] to-[#ffffff]">
                 <nav>
                     <span>
-                        <img src="landing/Logo" />
+                        <img src="/landing/Logo.svg" />
                         DataCrawl
                     </span>
                     <div>
