@@ -40,3 +40,15 @@ select option {
 option:focus {
     background-color: #2A2A2A;
 }
+
+@media (min-width: 1350px) {
+    #spider-graphic {
+        right: 2%;
+    }
+}
+
+/* @media (min-width: 1400px) {
+    #spider-graphic {
+        right: 4%;
+    }
+} */
