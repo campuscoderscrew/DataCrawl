@@ -44,6 +44,7 @@ option:focus {
 @media (min-width: 1350px) {
     #spider-graphic {
         right: 2%;
+        color: #575757;
     }
 }
 
