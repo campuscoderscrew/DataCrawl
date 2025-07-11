@@ -6,11 +6,11 @@ function SearchMessageErrors(props) {
     <div>
       {props.errors.length > 0 && (
         <div
-          className="fixed inset-0 flex items-center justify-center z-50 font-[Helvetica]"
+          className="fixed inset-0 flex items-center justify-center z-50 font-[Helvetica] bg-black/50"
           onClick={props.onClose}
         >
           <div
-            className="bg-black/75 text-red-600 h-95 w-75 py-10 rounded-lg shadow-2xl flex flex-col items-center gap-6 relative"
+            className="bg-[#1a1a1a] text-red-600 min-h-95 min-w-75 py-10 p-10 rounded-lg shadow-2xl flex flex-col items-center gap-6 relative z-51"
             onClick={(e) => e.stopPropagation()}
           >
             <h1 className="font-bold text-center">
