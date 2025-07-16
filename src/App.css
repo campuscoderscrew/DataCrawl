@@ -40,3 +40,20 @@ select option {
 option:focus {
     background-color: #2A2A2A;
 }
+
+@media (min-width: 1350px) {
+    #spider-graphic {
+        right: 2%;
+        color: #575757;
+    }
+}
+
+#bg-gradient {
+    /* background: radial-gradient(at 75% 60%, #1f1f1f, #111111); */
+}
+
+/* @media (min-width: 1400px) {
+    #spider-graphic {
+        right: 4%;
+    }
+} */

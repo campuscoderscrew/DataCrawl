@@ -74,7 +74,7 @@ export default function SignUp({ setNewUser }) {
               />
             </div>
 
-            <div className="relative flex items-center mb-8">
+            <div className="relative flex items-center mb-2">
               <span className="absolute left-4.5">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
