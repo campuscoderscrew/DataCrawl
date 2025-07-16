@@ -412,7 +412,7 @@ const Results = (props) => {
                   <select
                     value={sortBy}
                     onChange={(e) => handleSortChange(e.target.value, sortOrder)}
-                    className="text-sm border border-white rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent text-white"
+                    className="text-sm bg-[#313131] border border-white rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent text-white"
                   >
                     <option value="relevance">Relevance</option>
                     <option value="name">Name</option>
@@ -425,7 +425,7 @@ const Results = (props) => {
                   <select
                     value={sortOrder}
                     onChange={(e) => handleSortChange(sortBy, e.target.value)}
-                    className="text-sm border border-white rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent text-white"
+                    className="text-sm bg-[#313131] border border-white rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent text-white"
                   >
                     <option value="desc">Descending</option>
                     <option value="asc">Ascending</option>
@@ -472,20 +472,20 @@ const Results = (props) => {
               paginatedData.map((item, index) => (
                 <div
                   key={item.id || index}
-                  className="grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-gray-50 transition-colors duration-150"
+                  className="group grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-gray-50 transition-colors duration-150"
                 >
-                  <div className="col-span-1 text-sm font-medium text-gray-900">
+                  <div className="col-span-1 text-sm font-medium group-hover:text-gray-900 text-white">
                     {item.id}
                   </div>
 
                   <div className="col-span-3">
-                    <p className="text-sm font-medium text-gray-900 truncate" title={item.name}>
+                    <p className="text-sm font-medium text-white group-hover:text-gray-900 truncate" title={item.name}>
                       {item.name}
                     </p>
                   </div>
 
-                  <div className="col-span-3 flex items-center space-x-3">
-                    <span className="text-sm font-semibold text-gray-900 min-w-[2rem]">
+                  <div className="col-span-3 flex items-center group-hover:text-gray-900 space-x-3">
+                    <span className="text-sm font-semibold text-white group-hover:text-gray-900 min-w-[2rem]">
                       {getRelevanceScore(item.relevance)}%
                     </span>
                     <div className="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
@@ -497,13 +497,13 @@ const Results = (props) => {
                   </div>
 
                   <div className="col-span-2 flex items-center space-x-2">
-                    {getSourceIcon(item.type)}
-                    <span className="text-sm font-medium text-gray-700">
+                    {getSourceIcon(item.type)} 
+                    <span className="text-sm font-medium text-gray-300 group-hover:text-gray-900">
                       {getSourceLabel(item.type)}
                     </span>
                   </div>
 
-                  <div className="col-span-1 text-sm text-gray-600">
+                  <div className="col-span-1 text-sm text-gray-300 group-hover:text-gray-900">
                     {item.size || 'N/A'}
                   </div>
 
