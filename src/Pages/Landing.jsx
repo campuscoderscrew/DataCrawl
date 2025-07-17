@@ -38,7 +38,7 @@ export default function Landing() {
         {
             label: "Register",
             title: "Start Crawling Smarter",
-            subtext: "Clean, scalable, and fast web crawling -- without the technical hassle"
+            subtext: "Clean, scalable, and fast web crawling — without the"
         },
     ]
 
@@ -189,6 +189,14 @@ export default function Landing() {
             {/* Register */}
             <section className="flex flex-col bg-[#111111] items-center box-border px-25 xl:px-35">
                 <Header {...headers[4]} />
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 3, duration: 0.8 }}
+                    viewport={{ once: true, amount: 1 }}
+                >
+                    <p className="font-['Roboto'] text-[#969696]">technical hassle</p>
+                </motion.div>
                     <div className="py-20">
                         <button className="border-1 border-[#ffffff] px-8 py-3 text-[#000000] bg-[#bfbfbf] rounded-xl  *:font-bold font-[Heebo] hover:cursor-pointer transition-all hover:bg-[#000000] hover:text-[#ffffff] duration-200" onClick={() => navigate('/SignUp')}>
                             <span>Get Started</span>
