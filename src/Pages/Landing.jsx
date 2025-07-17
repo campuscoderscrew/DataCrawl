@@ -10,6 +10,7 @@ import FeatureCard from "../Components/Landing/FeatureCard";
 import { motion } from "framer-motion"
 import { useNavigate } from 'react-router-dom';
 import SparkOverlay from "../Components/SparkOverlay";
+import PricingCard from "../Components/Landing/PricingCard";
 
 export default function Landing() {
     const navigate = useNavigate();
@@ -163,6 +164,19 @@ export default function Landing() {
             {/* Demo */}
 
             {/* Pricing: Pricing Card Component  */}
+            <section className="bg-black">
+                <PricingCard
+                plan={"Pro"}
+                isPopular={true}
+                description={"Perfect for smaller projects, will meet all your basic needs."}
+                cost={55}
+                pages={"10,000"}
+                feature2={"Lorem ipsum sit"}
+                feature3={"Lorem ipsum sit amet dolor"}
+                feature4={"Lorem ipsum"}
+                feature5={"Lorem ipsum sit"}
+            />
+            </section>
 
             {/* Register */}
 
