@@ -31,9 +31,15 @@ export default function PricingCard({
     feature4,
     feature5
 }) {
+    
+    let alignSelf = "";
+    if (isPopular) {
+        alignSelf = "self-start";
+    }
+
     return (
         <>
-            <div className="border-solid border-[1.1px] border-[#313131] bg-[linear-gradient(_#1E1E1E,_#111_50%)] rounded-[16.48px] max-w-md p-8 font-[Roboto] text-base">
+            <div className={`border-solid border-[1.1px] border-[#313131] bg-[linear-gradient(_#1E1E1E,_#111_50%)] rounded-[16.48px] p-8 font-[Roboto] text-base ${alignSelf}`}>
                 <div id="heading" className="flex justify-between items-center">
                     <h2 className="text-[#DCDCDC] text-2xl font-bold">{plan}</h2>
                     <Pill show={isPopular} />
