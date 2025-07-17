@@ -10,9 +10,10 @@ import FeatureCard from "../Components/Landing/FeatureCard";
 import { motion } from "framer-motion"
 import { useNavigate } from 'react-router-dom';
 import SparkOverlay from "../Components/SparkOverlay";
+import PricingCard from "../Components/Landing/PricingCard";
 import Header from "../Components/Landing/Header";
 import Need from "../Components/Landing/Need"
-
+import { Heading } from "lucide-react";
 
 export default function Landing() {
     const navigate = useNavigate();
@@ -185,6 +186,44 @@ export default function Landing() {
             {/* Demo */}
 
             {/* Pricing: Pricing Card Component  */}
+            <section className="flex flex-col items-center bg-[#111111] mt-20 mb-40 ">
+                <Header label={"Pricing"} title={"Choose Your Plan"} subtext={"Pricing for all needs."} />
+                <div className="flex justify-center flex-wrap md:flex-nowrap gap-8 items-end h-full md:h-150 mx-12 mt-30 ">
+                    <PricingCard
+                        plan={"Basic"}
+                        isPopular={false}
+                        description={"Perfect for smaller projects, will meet all your basic needs."}
+                        cost={20}
+                        pages={"100"}
+                        feature2={"Lorem ipsum sit"}
+                        feature3={"Lorem ipsum sit amet dolor"}
+                        feature4={"Lorem ipsum"}
+                        feature5={"Lorem ipsum sit"}
+                    />
+                    <PricingCard
+                        plan={"Pro"}
+                        isPopular={true}
+                        description={"Perfect for smaller projects, will meet all your basic needs."}
+                        cost={55}
+                        pages={"10,000"}
+                        feature2={"Lorem ipsum sit"}
+                        feature3={"Lorem ipsum sit amet dolor"}
+                        feature4={"Lorem ipsum"}
+                        feature5={"Lorem ipsum sit"}
+                    />
+                    <PricingCard
+                        plan={"Enterprise"}
+                        isPopular={false}
+                        description={"Perfect for smaller projects, will meet all your basic needs."}
+                        cost={89}
+                        pages={"100,000"}
+                        feature2={"Lorem ipsum sit"}
+                        feature3={"Lorem ipsum sit amet dolor"}
+                        feature4={"Lorem ipsum"}
+                        feature5={"Lorem ipsum sit"}
+                    />
+                </div>
+            </section>
 
             {/* Register */}
             <section className="flex flex-col bg-[#111111] items-center box-border px-25 xl:px-35">
