@@ -1,7 +1,7 @@
 function GlowDot({ className = "" }) {
   return (
     <div
-      className={`absolute w-[30.78px] h-[30.78px] pointer-events-none z-0 rounded-full bg-[#717070] ${className}`}
+      className={`absolute w-[30px] h-[30px] pointer-events-none z-0 rounded-full bg-[#717070] ${className}`}
       style={{
         boxShadow: "0 0 170.99px 55.57px rgba(255,255,255,0.4)",
         opacity: 1,
@@ -18,17 +18,19 @@ export default function FeatureCard({
   glow,
 }) {
   return (
-    <div className="relative w-[466px] h-[275.3px] flex items-center justify-center">
+    <div className="relative w-100 aspect-[5/3] flex items-center justify-center">
       {glow && <GlowDot className={glowClass} />}
-      <div className="bg-[linear-gradient(62deg,_#161616_38%,_#111111_58%,_#111111_87%,_#1D1D1D_100%)] z-10 rounded-xl shadow-lg p-14 flex flex-col items-center justify-center border-2 border-[#191919] w-full h-full">
-        <div className="w-[349.83px] h-[158.7px] gap-8 flex flex-col justify-center">
-          <div className="w-58 h-14 text-[#A4A4A4] flex flex-row items-center gap-[29.92px]">
+
+      <div className="bg-[linear-gradient(62deg,_#161616_38%,_#111111_58%,_#111111_87%,_#1D1D1D_100%)] z-10 rounded-xl shadow-lg flex flex-col items-center justify-center border-2 border-[#191919] w-full h-full">
+
+        <div className="w-full h-full p-14 gap-8 flex flex-col justify-center">
+          <div className="text-[#A4A4A4] flex flex-row items-center gap-6 ">
             {icon}
-            <h1 className="text-4xl font-bold font-inria whitespace-nowrap text-[#A4A4A4]">
+            <h1 className="text-3xl font-[500] font-inria whitespace-nowrap text-[#A4A4A4]">
               {name}
             </h1>
           </div>
-          <p className="text-[#808080] text-xl font-heebo">{description}</p>
+          <p className="text-[#808080] text-md font-[Heebo]">{description}</p>
         </div>
       </div>
     </div>
