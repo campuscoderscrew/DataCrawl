@@ -187,6 +187,14 @@ export default function Landing() {
             {/* Pricing: Pricing Card Component  */}
 
             {/* Register */}
+            <section className="flex flex-col bg-[#111111] items-center box-border px-25 xl:px-35">
+                <Header {...headers[4]} />
+                    <div className="py-20">
+                        <button className="border-1 border-[#ffffff] px-8 py-3 text-[#000000] bg-[#bfbfbf] rounded-xl  *:font-bold font-[Heebo] hover:cursor-pointer transition-all hover:bg-[#000000] hover:text-[#ffffff] duration-200" onClick={() => navigate('/SignUp')}>
+                            <span>Get Started</span>
+                        </button>
+                    </div>
+            </section>
 
             {/* Footer */}
             <div className="relative py-10 text-[#E3E3E3] bg-[#111111] w-screen overflow-clip px-25 xl:px-35 flex flex-col box-border">
