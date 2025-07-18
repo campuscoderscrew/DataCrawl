@@ -6,6 +6,9 @@ Components related to this page are in Components/Landing
 
  */
 
+
+import React from "react";
+import { useState, useEffect } from "react";
 import FeatureCard from "../Components/Landing/FeatureCard";
 import { motion } from "framer-motion"
 import { useNavigate } from 'react-router-dom';
@@ -13,11 +16,57 @@ import SparkOverlay from "../Components/SparkOverlay";
 import PricingCard from "../Components/Landing/PricingCard";
 import Header from "../Components/Landing/Header";
 import Need from "../Components/Landing/Need"
-import { Heading } from "lucide-react";
+import '../App.css';
+
+import {
+  Heading,
+  Download,
+  PlayCircle,
+  Globe,
+  Layers,
+  AudioLines,
+  Database
+} from 'lucide-react';
+
+
 
 export default function Landing() {
+
     const navigate = useNavigate();
 
+    // Demo Table is conditionally rendered upon generation
+    const [generated, setGenerated] = React.useState(false);
+    const [toggle, setToggle] = useState(false);
+
+    // Search Input
+    const [input, setInput] = React.useState("http://demo.scrapelink.com/");
+
+    const getRelevanceColor = (relevance) => {
+        if (relevance >= 70) return 'bg-[#0c6634]';
+        if (relevance >= 50) return 'bg-[#2b479b]';
+        return 'bg-[#811e1f]';
+    };
+
+    const getSourceIcon = (icon) => {
+        switch (icon) {
+        case 'api':
+            return <Database className="w-4 h-4 text-gray-500" />;
+        case 'website':
+        case 'globe':
+            return <Globe className="w-4 h-4 text-gray-500" />;
+        case 'server':
+            return <Database className="w-4 h-4 text-gray-500" />;
+        case 'video':
+            return <PlayCircle className="w-4 h-4 text-gray-500" />;
+        case 'audio':
+            return <AudioLines className="w-4 h-4 text-gray-500" />;
+        default:
+            return <Layers className="w-4 h-4 text-gray-500" />;
+        }
+    };
+
+
+    // HEADER DATA
     const headers = [
         {
             label: "Features",
@@ -42,6 +91,52 @@ export default function Landing() {
             subtext: "Clean, scalable, and fast web crawling — without the"
         },
     ]
+
+    // TEMPORARY DATA FOR DEMO
+    const tableData = [
+        {
+            name: "source 1",
+            relevance: 91,
+            type: "Website",
+            icon: "globe",
+            size: "50.5 MB"
+        },
+        {
+            name: "source name 2",
+            relevance: 87,
+            type: "API",
+            icon: "api",
+            size: "21.8 MB"
+        },
+        {
+            name: "source title 3",
+            relevance: 70,
+            type: "Video",
+            icon: "video",
+            size: "10.2 MB"
+        },
+        {
+            name: "source 4",
+            relevance: 68,
+            type: "Website",
+            icon: "globe",
+            size: "36.9 MB"
+        },
+        {
+            name: "title source 5",
+            relevance: 67,
+            type: "Website",
+            icon: "globe",
+            size: "44.8 MB"
+        },
+        {
+            name: "source 6",
+            relevance: 41,
+            type: "Audio",
+            icon: "audio",
+            size: "12.4 MB"
+        }
+    ];
 
     return (
         <div className="bg-[#111111] h-screen w-screen overflow-x-hidden" id="landing">
@@ -120,7 +215,6 @@ export default function Landing() {
 
             {/* Features: Feature Card Component */}
 
-
             <section className="flex flex-col bg-[#111111] items-center justify-center box-border px-25 xl:px-35 py-40">
                 <Header {...headers[0]} />
 
@@ -184,6 +278,72 @@ export default function Landing() {
             </div>
 
             {/* Demo */}
+
+            <div className="relative w-screen px-25 xl:px-35 pt-20 pb-40 flex flex-wrap flex-col text-[#E3E3E3] bg-[#111111] overflow-x-hidden gap-15 items-center box-border">
+                <Header {...headers[2]} />
+                {/*Demo Container*/}
+                <div className="bg-[#151515] p-6 rounded-md shadow-md w-full max-w-4xl">
+                    <div className="flex items-center bg-[#1a1a1a] rounded-md mx-10 mt-10 px-2 py-2 space-x-2 border border-gray-600">
+                        <input
+                            type="text"
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                            placeholder="http://demo.scrapelink.com/"
+                            className="flex-grow bg-transparent text-gray-200 placeholder-gray-400 px-4 py-2 focus:outline-none"
+                        />
+                        <button onClick={() => {
+                            setGenerated(true);
+                            setToggle(prev => !prev); // Toggles true/false
+                        }}
+                            className="bg-[#2c2c2c] hover:bg-[#444] text-gray-300 font-semibold px-4 py-2 rounded-md transition-colors duration-200"
+                        >
+                            Generate
+                        </button>
+                    </div>
+
+                    {/*DEMO TABLE*/}
+                    {generated && (
+                    <div className="bg-[#121212] mt-12 mx-10 mb-10 p-4 rounded-md border border-gray-600 min-h-[440px]">
+                        
+                        <div className="grid grid-cols-12 gap-4 px-6 py-3">
+                            <div className="col-span-3 font-semibold text-white tracking-wider">
+                                Name
+                            </div>
+                            <div className="col-span-5 font-semibold text-white tracking-wider">
+                                Relevance
+                            </div>
+                            <div className="col-span-2 font-semibold text-white tracking-wider">
+                                Data Type
+                            </div>
+                            <div className="col-span-2 font-semibold text-white tracking-wider">
+                                Size
+                            </div>
+                            {tableData.map((data, index) => (
+                                
+                                <React.Fragment key={`${data.name}-${toggle}`}>
+                                    { /*Fade in Animation */ }
+                                    <div className="col-span-3 text-gray-200 mt-4 fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
+                                        {data.name}</div>
+                                    <div className="col-span-5 text-gray-200 flex items-center mt-4 fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
+                                        <span className="mr-2">{data.relevance}%</span>
+                                        <div className="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
+                                            <div
+                                                className={`h-full rounded-full transition-all duration-300 ${getRelevanceColor(data.relevance)}`}
+                                                style={{ width: `${data.relevance}%` }}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-span-2 mt-4 text-gray-400 fade-in flex items-center gap-2" style={{ animationDelay: `${index * 0.2}s` }}>{getSourceIcon(data.icon)} {data.type}</div>
+                                    <div className="col-span-2 mt-4 text-gray-200 fade-in" style={{ animationDelay: `${index * 0.2}s` }}>{data.size}</div>
+                                </React.Fragment>
+                            ))}
+                        </div>
+                    </div>
+                    )}
+                </div>
+
+            </div>
+
 
             {/* Pricing: Pricing Card Component  */}
             <section className="flex flex-col items-center bg-[#111111] mt-20 mb-40 ">
