@@ -13,11 +13,13 @@ import FeatureCard from "../Components/Landing/FeatureCard";
 import { motion } from "framer-motion"
 import { useNavigate } from 'react-router-dom';
 import SparkOverlay from "../Components/SparkOverlay";
+import PricingCard from "../Components/Landing/PricingCard";
 import Header from "../Components/Landing/Header";
 import Need from "../Components/Landing/Need"
 import '../App.css';
 
 import {
+  Heading,
   Download,
   PlayCircle,
   Globe,
@@ -25,6 +27,7 @@ import {
   AudioLines,
   Database
 } from 'lucide-react';
+
 
 
 export default function Landing() {
@@ -85,7 +88,7 @@ export default function Landing() {
         {
             label: "Register",
             title: "Start Crawling Smarter",
-            subtext: "Clean, scalable, and fast web crawling -- without the technical hassle"
+            subtext: "Clean, scalable, and fast web crawling — without the"
         },
     ]
 
@@ -343,8 +346,62 @@ export default function Landing() {
 
 
             {/* Pricing: Pricing Card Component  */}
+            <section className="flex flex-col items-center bg-[#111111] mt-20 mb-40 ">
+                <Header label={"Pricing"} title={"Choose Your Plan"} subtext={"Pricing for all needs."} />
+                <div className="flex justify-center flex-wrap md:flex-nowrap gap-8 items-end h-full md:h-150 mx-12 mt-30 ">
+                    <PricingCard
+                        plan={"Basic"}
+                        isPopular={false}
+                        description={"Perfect for smaller projects, will meet all your basic needs."}
+                        cost={20}
+                        pages={"100"}
+                        feature2={"Lorem ipsum sit"}
+                        feature3={"Lorem ipsum sit amet dolor"}
+                        feature4={"Lorem ipsum"}
+                        feature5={"Lorem ipsum sit"}
+                    />
+                    <PricingCard
+                        plan={"Pro"}
+                        isPopular={true}
+                        description={"Perfect for smaller projects, will meet all your basic needs."}
+                        cost={55}
+                        pages={"10,000"}
+                        feature2={"Lorem ipsum sit"}
+                        feature3={"Lorem ipsum sit amet dolor"}
+                        feature4={"Lorem ipsum"}
+                        feature5={"Lorem ipsum sit"}
+                    />
+                    <PricingCard
+                        plan={"Enterprise"}
+                        isPopular={false}
+                        description={"Perfect for smaller projects, will meet all your basic needs."}
+                        cost={89}
+                        pages={"100,000"}
+                        feature2={"Lorem ipsum sit"}
+                        feature3={"Lorem ipsum sit amet dolor"}
+                        feature4={"Lorem ipsum"}
+                        feature5={"Lorem ipsum sit"}
+                    />
+                </div>
+            </section>
 
             {/* Register */}
+            <section className="flex flex-col bg-[#111111] items-center box-border px-25 xl:px-35">
+                <Header {...headers[4]} />
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 3, duration: 0.8 }}
+                    viewport={{ once: true, amount: 1 }}
+                >
+                    <p className="font-['Roboto'] text-[#969696]">technical hassle</p>
+                </motion.div>
+                    <div className="py-20">
+                        <button className="border-1 border-[#ffffff] px-8 py-3 text-[#000000] bg-[#bfbfbf] rounded-xl  *:font-bold font-[Heebo] hover:cursor-pointer transition-all hover:bg-[#000000] hover:text-[#ffffff] duration-200" onClick={() => navigate('/SignUp')}>
+                            <span>Get Started</span>
+                        </button>
+                    </div>
+            </section>
 
             {/* Footer */}
             <div className="relative py-10 text-[#E3E3E3] bg-[#111111] w-screen overflow-clip px-25 xl:px-35 flex flex-col box-border">
